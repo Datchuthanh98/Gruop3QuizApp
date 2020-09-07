@@ -29,6 +29,7 @@ class ViewController: UIViewController ,UITextViewDelegate,UITableViewDelegate, 
     @IBOutlet weak var lblStateQuestion: UILabel!
     @IBOutlet weak var lblTime: UILabel!
     @IBOutlet weak var lblScore: UILabel!
+    
     @IBOutlet weak var lblCategory: UILabel!
     
     @IBOutlet weak var tblNamePlayer: UILabel!
@@ -68,6 +69,7 @@ class ViewController: UIViewController ,UITextViewDelegate,UITableViewDelegate, 
     @IBAction func btnNext(_ sender: Any) {
         if(state < 10){
             if(choose == listQuestion[state].right-1){
+                print("chon dung roi")
                 score += 1 ;
                 lblScore.text = "Score : \(score)"
                 nextQuestion()
@@ -153,6 +155,10 @@ class ViewController: UIViewController ,UITextViewDelegate,UITableViewDelegate, 
         cell.txtAnswer.layer.cornerRadius = cell.txtAnswer.bounds.height / 2
         cell.txtAnswer.layer.masksToBounds = true
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        choose = indexPath.row
     }
     
     

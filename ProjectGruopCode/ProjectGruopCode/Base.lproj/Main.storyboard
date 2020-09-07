@@ -232,7 +232,7 @@
                         <outlet property="btnNext" destination="mXw-1X-O1D" id="o80-jW-QGP"/>
                         <outlet property="lblCategory" destination="hvC-3s-TNT" id="7O9-aS-5Fw"/>
                         <outlet property="lblQuestion" destination="Y8c-7R-HmG" id="Abm-ng-31Q"/>
-                        <outlet property="lblScore" destination="II1-Ow-ILp" id="gtR-C2-w4p"/>
+                        <outlet property="lblScore" destination="II1-Ow-ILp" id="v34-GE-yfO"/>
                         <outlet property="lblStateQuestion" destination="v9f-sn-YYM" id="c1N-bo-hYM"/>
                         <outlet property="lblTime" destination="tDx-Wk-mph" id="zFy-Vp-slH"/>
                         <outlet property="loading" destination="99w-vl-OQf" id="Zns-9v-KmH"/>
