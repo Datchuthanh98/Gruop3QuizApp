@@ -16,13 +16,11 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
     var choose = -1
     var ref = Database.database().reference()
     let dataTable = "1HxVup2Hiua1mhNIMNujHJhj4zatLWKs_WXQH5qiypZA"
-    
+    var refreshControl = UIRefreshControl()
     @IBOutlet weak var lblUserName: UILabel!
     
     
     @IBOutlet weak var tblCategory: UITableView!
-    @IBOutlet weak var btnStartExam: UIButton!
-    @IBOutlet weak var btnSeeListQuestion: UIButton!
     @IBOutlet weak var btnHistory: UIButton!
     
     //MARK: Load Subview
@@ -40,28 +38,20 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
         let nibName = UINib(nibName: "CategoryCustomCell", bundle: nil)
         tblCategory.register(nibName, forCellReuseIdentifier: "CategoryCell")
         GetListCategory()
+        
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        tblCategory.addSubview(refreshControl) // not
+        
 
     }
     
-    //MARK: Click btn Start
-    @IBAction func clickStartExam(_ sender: Any) {
-        if choose == -1 {
-            showDialogPick()
-        }else{
-          nextoExamScreen()
-        }
+    @objc func refresh(_ sender: AnyObject) {
+        GetListCategory()
+        refreshControl.endRefreshing()
     }
     
-    
-    //MARK: xem danh sach
-    @IBAction func clickSeeListQuestion(_ sender: Any) {
-        if choose == -1 {
-            showDialogPick()
-        }else{
-           nextoListQuestionScreen()
-        }
-        
-    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return listCategory.count
     }
@@ -71,6 +61,7 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
         cell.viewCard.layer.cornerRadius = 10
         cell.viewCard.layer.masksToBounds = true
         cell.delegate = self
+        cell.lblCategory.text = listCategory[indexPath.row]
         cell.nameCategory = listCategory[indexPath.row]
         return cell
     }
@@ -83,6 +74,8 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
         choose = indexPath.row
     }
+    
+  
     
     
     func showDialogPick(){
@@ -110,7 +103,7 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
         
           
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "examScreen") as! ViewController
-        vc.category = listCategory[choose]
+//        vc.category = listCategory[choose]
                   self.navigationController?.pushViewController(vc, animated: true)
     
     }
@@ -136,8 +129,7 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
     
     func custom() {
         btnHistory.layer.cornerRadius = btnHistory.bounds.height / 2
-        btnSeeListQuestion.layer.cornerRadius = btnSeeListQuestion.bounds.height / 2
-        btnStartExam.layer.cornerRadius = btnStartExam.bounds.height / 2
+ 
     }
     
     @IBAction func btnSignOut(_ sender: Any) {
@@ -156,14 +148,14 @@ extension CategoryViewController : SmartDelegate {
    print(with)
          if with == "view" {
           
-            let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "historyScreen") as? HistoryViewController
-            vc?.selectCategory = nameCate
+            let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "listQuestionScreen") as? QuestionViewController
+            vc?.category = nameCate
             self.navigationController?.pushViewController(vc!, animated: true)
         } else {
   
             let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "examScreen") as? ViewController
             vc?.category = nameCate
-            self.navigationController?.pushViewController(vc!, animated: true)
+            self.navigationController?.pushViewController(vc!, animated: false)
         }
     }
 

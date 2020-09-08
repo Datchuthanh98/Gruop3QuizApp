@@ -19,7 +19,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cdL-Md-cD3">
                         <rect key="frame" x="10" y="10" width="455" height="251"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nature" translatesAutoresizingMaskIntoConstraints="NO" id="DHd-iC-o3P">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="category" translatesAutoresizingMaskIntoConstraints="NO" id="DHd-iC-o3P">
                                 <rect key="frame" x="10" y="10" width="435" height="133"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r8B-t9-Ft5">
@@ -119,6 +119,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="lblCategory" destination="r8B-t9-Ft5" id="4J6-4H-B3O"/>
                 <outlet property="txtCategory" destination="r8B-t9-Ft5" id="QsX-mw-zYk"/>
                 <outlet property="viewCard" destination="cdL-Md-cD3" id="uCT-7A-ulB"/>
             </connections>
@@ -126,8 +127,8 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="category" width="700" height="393"/>
         <image name="doc.fill" catalog="system" width="115" height="128"/>
-        <image name="nature" width="256" height="129"/>
         <image name="paperplane.fill" catalog="system" width="128" height="121"/>
     </resources>
 </document>

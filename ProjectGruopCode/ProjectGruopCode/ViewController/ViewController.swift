@@ -7,6 +7,7 @@ class ViewController: UIViewController ,UITextViewDelegate,UITableViewDelegate, 
     
     
    
+
     @IBOutlet weak var loading: UIActivityIndicatorView!
     let contactCellId = "ExamTableViewCell"
     var stateListAnswer = ["1","2","3","4"]
@@ -21,16 +22,17 @@ class ViewController: UIViewController ,UITextViewDelegate,UITableViewDelegate, 
     var timer : Timer?
     var timerLoading : Timer?
   
+  
+    @IBOutlet weak var imgAnimate: UIImageView!
     
     @IBOutlet weak var btnNext: UIButton!
-
     @IBOutlet weak var tblContact: UITableView!
     @IBOutlet weak var lblQuestion: UILabel!
     @IBOutlet weak var lblStateQuestion: UILabel!
     @IBOutlet weak var lblTime: UILabel!
     @IBOutlet weak var lblScore: UILabel!
     
-    @IBOutlet weak var lblCategory: UILabel!
+    
     
     @IBOutlet weak var tblNamePlayer: UILabel!
     
@@ -41,21 +43,25 @@ class ViewController: UIViewController ,UITextViewDelegate,UITableViewDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        lblCategory.text = "The level exam : \(category)"
-        tblNamePlayer.text = "Name Player : \(UserDefaults.standard.string(forKey: "nameUserSession") ?? "Underfined")"
+        self.imgAnimate.isHidden = true
+        tblContact.delegate = self
+            tblContact.dataSource = self
+//        lblCategory.text = "The level exam : \(category)"
+        tblNamePlayer.text = "\(UserDefaults.standard.string(forKey: "nameUserSession") ?? "Underfined")"
         DispatchQueue.main.async {
             self.getData()
         }
         runTimerGetData()
         tblContact.register(UINib.init(nibName: contactCellId, bundle: nil), forCellReuseIdentifier: contactCellId)
         tblContact.reloadData()
+        self.tblContact.isScrollEnabled = false;
             }
     
     
     
     func nextQuestion(){
         state += 1
-        lblStateQuestion.text = "Question: \(state)/10"
+        lblStateQuestion.text = "\(state)/10"
         stateListAnswer.removeAll()
         stateListAnswer.append(listQuestion[state].answer1)
         stateListAnswer.append(listQuestion[state].answer2)
@@ -66,20 +72,22 @@ class ViewController: UIViewController ,UITextViewDelegate,UITableViewDelegate, 
     }
     
     
+  
     @IBAction func btnNext(_ sender: Any) {
         if(state < 10){
-            if(choose == listQuestion[state].right-1){
-                print("chon dung roi")
-                score += 1 ;
-                lblScore.text = "Score : \(score)"
-                nextQuestion()
-            }else{
-                nextQuestion()
-            }
-            choose = -1
-            }else{
-             nextToResult()
-        }
+                 if(choose == listQuestion[state].right-1){
+                    showCorrectAnimation()
+                     score += 1 ;
+                     lblScore.text = "Score : \(score)"
+                     nextQuestion()
+                 }else{
+                    showIncorrectAnimation()
+                     nextQuestion()
+                 }
+                 choose = -1
+                 }else{
+                  nextToResult()
+             }
     }
     
     
@@ -163,18 +171,36 @@ class ViewController: UIViewController ,UITextViewDelegate,UITableViewDelegate, 
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return 70
     }
+    
+
     
          func custom() {
-        btnNext.layer.cornerRadius = btnNext.bounds.height / 2
-        lblQuestion.layer.cornerRadius = lblQuestion.bounds.height / 4
-        lblQuestion.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        lblQuestion.layer.borderWidth = 2
-        lblQuestion.layer.borderColor = UIColor.black.cgColor
-        lblQuestion.layer.masksToBounds = true
+
     }
     
+    
+    func showCorrectAnimation(){
+        self.imgAnimate.image = UIImage.init(named: "correct")
+        self.imgAnimate.isHidden = false
+        let seconds = 0.25
+        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+           
+                        self.imgAnimate.isHidden = true
+        }
+        
+    }
+    
+    func showIncorrectAnimation(){
+        self.imgAnimate.image = UIImage.init(named: "incorrect")
+            self.imgAnimate.isHidden = false
+            let seconds = 0.25
+            DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+               
+                            self.imgAnimate.isHidden = true
+            }
+    }
 }
 
 

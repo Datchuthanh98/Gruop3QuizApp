@@ -21,6 +21,7 @@ class CategoryCustomCell: UITableViewCell {
     @IBOutlet weak var txtCategory: UILabel!
     var nameCategory = "Easy"
     
+    @IBOutlet weak var lblCategory: UILabel!
     
     weak var delegate: SmartDelegate?
     
@@ -28,6 +29,7 @@ class CategoryCustomCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+       
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
