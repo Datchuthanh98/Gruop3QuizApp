@@ -8,9 +8,23 @@
 
 import UIKit
 
-class CategoryCustomCell: UITableViewCell {
 
+protocol SmartDelegate: class {
+    func didTapButton(with: String , nameCate : String)
+}
+
+class CategoryCustomCell: UITableViewCell {
+    
+    
+
+    @IBOutlet weak var viewCard: UIView!
     @IBOutlet weak var txtCategory: UILabel!
+    var nameCategory = "Easy"
+    
+    
+    weak var delegate: SmartDelegate?
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,5 +35,13 @@ class CategoryCustomCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    @IBAction func btnClickSeeQuestion(_ sender: Any) {
+
+        delegate?.didTapButton(with: "view", nameCate: self.nameCategory)
+    }
     
+    @IBAction func btnTryTest(_ sender: Any) {
+
+        delegate?.didTapButton(with: "test", nameCate: self.nameCategory)
+    }
 }
