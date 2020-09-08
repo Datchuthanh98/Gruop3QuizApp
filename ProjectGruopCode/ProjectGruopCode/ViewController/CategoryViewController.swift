@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 
-class CategoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class CategoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
 
     var listCategory = [""]
     var choose = -1
@@ -25,11 +25,13 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var btnSeeListQuestion: UIButton!
     @IBOutlet weak var btnHistory: UIButton!
     
+    //MARK: Load Subview
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         custom()
     }
     
+    //MARK: Load view
     override func viewDidLoad() {
         super.viewDidLoad()
         tblCategory.delegate = self
@@ -41,7 +43,7 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
 
     }
     
-
+    //MARK: Click btn Start
     @IBAction func clickStartExam(_ sender: Any) {
         if choose == -1 {
             showDialogPick()
@@ -66,14 +68,13 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryCustomCell
-        cell.txtCategory.text = listCategory[indexPath.row]
-        cell.txtCategory.layer.cornerRadius = cell.txtCategory.bounds.height / 2
-        cell.txtCategory.layer.masksToBounds = true
+        cell.viewCard.layer.cornerRadius = 10
+        cell.viewCard.layer.masksToBounds = true
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 250
     }
     
     
@@ -138,10 +139,29 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     @IBAction func btnSignOut(_ sender: Any) {
-         self.navigationController?.popViewController(animated: true)
         UserDefaults.standard.removeObject(forKey: "option")
         UserDefaults.standard.removeObject(forKey: "nameUserSession")
           UserDefaults.standard.removeObject(forKey: "idGG")
-        UserDefaults.standard.removeObject(forKey: "idFB")    }
+        UserDefaults.standard.removeObject(forKey: "idFB")
+        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginController") as! LoginController
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
         
+}
+
+extension CategoryViewController : SmartDelegate {
+    func didTapButton(with: String, nameCate: String) {
+   print("com here")
+         if title == "view" {
+            print("com here")
+            let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "historyScreen") as? HistoryViewController
+            self.navigationController?.pushViewController(vc!, animated: true)
+        } else {
+    print("com here")
+            let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "examScreen") as? ViewController
+            vc?.category = "Easy"
+            self.navigationController?.pushViewController(vc!, animated: true)
+        }
+    }
+
 }

@@ -8,6 +8,12 @@
 
 import UIKit
 
+
+protocol CategoryCellDelegate: AnyObject {
+    func didTapButton(with title: String, cateid: Int)
+}
+
+
 class ExamTableViewCell: UITableViewCell {
 
     @IBOutlet weak var viewQuestion: UIView!

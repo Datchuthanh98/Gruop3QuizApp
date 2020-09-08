@@ -1,11 +1,11 @@
 {
   "images" : [
     {
+      "filename" : "bglogin.jpeg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "question-mark.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
