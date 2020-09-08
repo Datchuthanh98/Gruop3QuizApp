@@ -10,6 +10,8 @@
 		15B06CC109B2787BEC43D581 /* Pods_ProjectGruopCode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C2AD6857E9C089F99160554 /* Pods_ProjectGruopCode.framework */; };
 		564630B5250372FE0017F9D3 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564630B4250372FE0017F9D3 /* Question.swift */; };
 		564630B7250373290017F9D3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564630B6250373290017F9D3 /* User.swift */; };
+		7F119D70250786BD0002E17B /* gifLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F119D6F250786BD0002E17B /* gifLoad.swift */; };
+		7F119D72250787930002E17B /* ziazia.gif in Resources */ = {isa = PBXBuildFile; fileRef = 7F119D71250787930002E17B /* ziazia.gif */; };
 		7F1A4FA72501D31F00093EF6 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1A4FA62501D31F00093EF6 /* ResultViewController.swift */; };
 		7F3776052500830C00C752CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3776042500830C00C752CB /* AppDelegate.swift */; };
 		7F3776072500830C00C752CB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3776062500830C00C752CB /* SceneDelegate.swift */; };
@@ -40,6 +42,8 @@
 		15D6D70E24D6ACFB0E92EFA5 /* Pods-ProjectGruopCode.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectGruopCode.debug.xcconfig"; path = "Target Support Files/Pods-ProjectGruopCode/Pods-ProjectGruopCode.debug.xcconfig"; sourceTree = "<group>"; };
 		564630B4250372FE0017F9D3 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		564630B6250373290017F9D3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		7F119D6F250786BD0002E17B /* gifLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gifLoad.swift; sourceTree = "<group>"; };
+		7F119D71250787930002E17B /* ziazia.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ziazia.gif; sourceTree = "<group>"; };
 		7F1A4FA62501D31F00093EF6 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		7F3776012500830C00C752CB /* ProjectGruopCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectGruopCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F3776042500830C00C752CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -92,12 +96,14 @@
 		7F1A4FA82501D32300093EF6 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				7F119D71250787930002E17B /* ziazia.gif */,
 				7FA3AB2B25022AFC00294AD6 /* HistoryViewController.swift */,
 				7FA518392502054F004B05CA /* QuestionViewController.swift */,
 				7FA5183A2502054F004B05CA /* CategoryViewController.swift */,
 				7F3776082500830C00C752CB /* ViewController.swift */,
 				7F1A4FA62501D31F00093EF6 /* ResultViewController.swift */,
 				7FCBD30C2501E8FB000EF5FB /* LoginController.swift */,
+				7F119D6F250786BD0002E17B /* gifLoad.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -240,6 +246,7 @@
 				7FA518362502053E004B05CA /* QuestionCustomCell.xib in Resources */,
 				7F37760E2500831600C752CB /* Assets.xcassets in Resources */,
 				7F3776252500D65D00C752CB /* ExamTableViewCell.xib in Resources */,
+				7F119D72250787930002E17B /* ziazia.gif in Resources */,
 				7F37760C2500830C00C752CB /* Main.storyboard in Resources */,
 				7FA3AB3125022B2500294AD6 /* HistoryCustomcellTableViewCell.xib in Resources */,
 			);
@@ -327,6 +334,7 @@
 				7FCBD30B2501E2C6000EF5FB /* ItemHistory.swift in Sources */,
 				7FA518372502053E004B05CA /* QuestionCustomCell.swift in Sources */,
 				7FCBD30D2501E8FB000EF5FB /* LoginController.swift in Sources */,
+				7F119D70250786BD0002E17B /* gifLoad.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -19,6 +19,7 @@ class ResultViewController: UIViewController {
     var category = ""
     var isPassed = ""
 
+    @IBOutlet weak var gif: UIImageView!
     @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var lblNamePlayer: UILabel!
     @IBOutlet weak var txtScore: UILabel!
@@ -30,12 +31,25 @@ class ResultViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         lblNamePlayer.text = "Name Player : \(UserDefaults.standard.string(forKey: "nameUserSession") ?? "Underfined")"
-        self.txtScore.text = String(score)
+     
         savetoServer()
         // Do any additional setup after loading the view.
+        if(score >= 5){
+            gif.isHidden = false
+            gif.loadGif(name: "ziazia")
+            self.txtScore.text = "Passed : \(self.score) /10 "
+            self.txtScore.textColor = UIColor.green
+        }
+        else {
+            self.txtScore.text = "Failed : \(self.score) /10 "
+            self.txtScore.textColor = UIColor.red
+            gif.isHidden = true
+        }
     }
     
+  
     
     func setResult(){
         if(self.option == 1){

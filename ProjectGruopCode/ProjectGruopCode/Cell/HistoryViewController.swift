@@ -36,7 +36,9 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         inputCategory.text = selectCategory
+//        inputCategory.isUserInteractionEnabled = false
         createPickerView()
         dismissPickerView()
         let nibName = UINib(nibName: "HistoryCustomcellTableViewCell", bundle: nil)
