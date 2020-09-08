@@ -36,7 +36,7 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
         tblCategory.delegate = self
         tblCategory.dataSource = self
-          lblUserName.text = "Name Player : \(UserDefaults.standard.string(forKey: "nameUserSession") ?? "Underfined")"
+          lblUserName.text = "\(UserDefaults.standard.string(forKey: "nameUserSession") ?? "Underfined")"
         let nibName = UINib(nibName: "CategoryCustomCell", bundle: nil)
         tblCategory.register(nibName, forCellReuseIdentifier: "CategoryCell")
         GetListCategory()
@@ -70,6 +70,8 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryCustomCell
         cell.viewCard.layer.cornerRadius = 10
         cell.viewCard.layer.masksToBounds = true
+        cell.delegate = self
+        cell.nameCategory = listCategory[indexPath.row]
         return cell
     }
     
@@ -151,15 +153,16 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
 
 extension CategoryViewController : SmartDelegate {
     func didTapButton(with: String, nameCate: String) {
-   print("com here")
-         if title == "view" {
-            print("com here")
+   print(with)
+         if with == "view" {
+          
             let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "historyScreen") as? HistoryViewController
+            vc?.selectCategory = nameCate
             self.navigationController?.pushViewController(vc!, animated: true)
         } else {
-    print("com here")
+  
             let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "examScreen") as? ViewController
-            vc?.category = "Easy"
+            vc?.category = nameCate
             self.navigationController?.pushViewController(vc!, animated: true)
         }
     }
