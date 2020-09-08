@@ -20,12 +20,12 @@
                         <rect key="frame" x="10" y="10" width="631" height="197"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 80/100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xok-0c-3TP">
-                                <rect key="frame" x="496" y="10" width="125" height="21"/>
+                                <rect key="frame" x="506" y="10" width="125" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="HT6-DT-K4r"/>
                                     <constraint firstAttribute="width" constant="125" id="Oil-qs-Lvq"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -35,17 +35,16 @@
                                     <constraint firstAttribute="height" constant="21" id="98g-ac-5oS"/>
                                     <constraint firstAttribute="width" constant="42" id="NS8-jt-czx"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.49851677550000001" green="0.98039215690000003" blue="0.3563766988" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subject: Test 1" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="svo-oT-Tkm">
-                                <rect key="frame" x="10" y="10" width="300" height="21"/>
+                                <rect key="frame" x="10" y="10" width="100.5" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="2Sv-qL-zBU"/>
-                                    <constraint firstAttribute="width" constant="300" id="yC0-G0-jFu"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -55,7 +54,7 @@
                                     <constraint firstAttribute="height" constant="21" id="Suf-49-tlN"/>
                                     <constraint firstAttribute="width" constant="200" id="xhk-7n-ZOv"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -65,7 +64,7 @@
                                     <constraint firstAttribute="height" constant="21" id="UB9-LI-s3P"/>
                                     <constraint firstAttribute="width" constant="53" id="y3H-9A-qT6"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -74,13 +73,14 @@
                         <constraints>
                             <constraint firstItem="KB0-ZG-OpN" firstAttribute="top" secondItem="xok-0c-3TP" secondAttribute="bottom" constant="20" id="5DK-ez-T3s"/>
                             <constraint firstItem="KB0-ZG-OpN" firstAttribute="leading" secondItem="eqX-0P-Nmc" secondAttribute="trailing" constant="30" id="5Kx-eV-5KR"/>
+                            <constraint firstItem="xok-0c-3TP" firstAttribute="leading" secondItem="svo-oT-Tkm" secondAttribute="trailing" priority="250" constant="186" id="C6v-zy-PEc"/>
                             <constraint firstItem="svo-oT-Tkm" firstAttribute="leading" secondItem="IeF-fk-Dsc" secondAttribute="leading" constant="10" id="KZX-V9-9wj"/>
                             <constraint firstItem="TLK-Oi-n7l" firstAttribute="leading" secondItem="IeF-fk-Dsc" secondAttribute="leading" constant="10" id="TVk-Fb-y1b"/>
                             <constraint firstItem="eqX-0P-Nmc" firstAttribute="top" secondItem="xok-0c-3TP" secondAttribute="bottom" constant="20" id="X6e-vr-kby"/>
                             <constraint firstItem="svo-oT-Tkm" firstAttribute="top" secondItem="IeF-fk-Dsc" secondAttribute="top" constant="10" id="Yek-ru-r7g"/>
                             <constraint firstAttribute="trailing" secondItem="KB0-ZG-OpN" secondAttribute="trailing" constant="10" id="ptR-2c-KJe"/>
                             <constraint firstItem="TLK-Oi-n7l" firstAttribute="top" secondItem="svo-oT-Tkm" secondAttribute="bottom" constant="20" id="qYy-ZF-iLj"/>
-                            <constraint firstAttribute="trailing" secondItem="xok-0c-3TP" secondAttribute="trailing" constant="10" id="r7T-SK-j5R"/>
+                            <constraint firstAttribute="trailing" secondItem="xok-0c-3TP" secondAttribute="trailing" id="r7T-SK-j5R"/>
                             <constraint firstItem="xok-0c-3TP" firstAttribute="top" secondItem="IeF-fk-Dsc" secondAttribute="top" constant="10" id="vTP-w7-7jI"/>
                         </constraints>
                     </view>

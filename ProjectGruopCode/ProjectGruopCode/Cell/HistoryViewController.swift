@@ -107,7 +107,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryCell", for: indexPath) as! HistoryCustomcellTableViewCell
         cell.txtName.text = "Name : \(listHistory[indexPath.row].userName)"
         cell.txtScore.text = "Score : \(String(listHistory[indexPath.row].score))/10"
-        cell.txtCategory.text = "Id : \(listHistory[indexPath.row].id))"
+        cell.txtCategory.text = "Id : \(listHistory[indexPath.row].id)"
         if(listHistory[indexPath.row].isPassed == "FAIL" ){
             cell.txtResult.textColor = UIColor.red
             cell.txtResult.text = "FAIL"
