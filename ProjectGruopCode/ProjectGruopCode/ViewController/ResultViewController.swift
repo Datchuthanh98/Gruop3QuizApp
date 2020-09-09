@@ -21,7 +21,7 @@ class ResultViewController: UIViewController {
 
     @IBOutlet weak var gif: UIImageView!
     @IBOutlet weak var btnBack: UIButton!
-    @IBOutlet weak var lblNamePlayer: UILabel!
+
     @IBOutlet weak var txtScore: UILabel!
     
     override func viewDidLayoutSubviews() {
@@ -32,7 +32,7 @@ class ResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        lblNamePlayer.text = "Name Player : \(UserDefaults.standard.string(forKey: "nameUserSession") ?? "Underfined")"
+//        lblNamePlayer.text = "Name Player : \(UserDefaults.standard.string(forKey: "nameUserSession") ?? "Underfined")"
      
         savetoServer()
         // Do any additional setup after loading the view.
