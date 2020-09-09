@@ -123,10 +123,9 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
-    
+       
    
-    
-    
+        
     func getData(){
           self.listHistory.removeAll()
         ref.child("history").child(self.selectCategory).observeSingleEvent(of: .value) { snapshot in
@@ -146,6 +145,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
                   self.listHistory.append(h)
             
               }
+            self.listHistory.sort(by: {$0.score > $1.score})
               self.tblHistory.reloadData()
           }
       }
@@ -170,4 +170,14 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         btnBacktoHome.layer.cornerRadius = btnBacktoHome.bounds.height / 2
     }
 
+    
+//    func sortData(){
+//        print(" 12112413213123 ")
+//        listHistory.sort(by: {$0.score > $1.score})
+//        tblHistory.reloadData()
+//        for history in listHistory {
+//            print(history.score)
+//        }
+//           tblHistory.reloadData()
+//    }
 }
