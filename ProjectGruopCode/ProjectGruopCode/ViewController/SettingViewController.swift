@@ -12,31 +12,30 @@ class SettingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.title = "Setting"
     }
     
-
-    @IBAction func topProfileScreen(_ sender: Any) {
-        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "profileScreen") as! ProfileViewController
-                          //           vc.score = self.score
-                          self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    
-    @IBAction func toConfigExamScreen(_ sender: Any) {
+   
+    @IBAction func clickTest(_ sender: Any) {
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "configExamScreen") as! ConfigexamViewController
-                          //           vc.score = self.score
-                          self.navigationController?.pushViewController(vc, animated: true)
+                                //           vc.score = self.score
+                                self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    @IBAction func logOut(_ sender: Any) {
-        UserDefaults.standard.removeObject(forKey: "option")
-           UserDefaults.standard.removeObject(forKey: "nameUserSession")
-             UserDefaults.standard.removeObject(forKey: "idGG")
-           UserDefaults.standard.removeObject(forKey: "idFB")
-           let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginController") as! LoginController
-           self.navigationController?.pushViewController(vc, animated: true)
+    @IBAction func clickUser(_ sender: Any) {
+        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "profileScreen") as! ProfileViewController
+        //           vc.score = self.score
+        self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    @IBAction func clickLogout(_ sender: Any) {
+        UserDefaults.standard.removeObject(forKey: "option")
+                UserDefaults.standard.removeObject(forKey: "nameUserSession")
+                  UserDefaults.standard.removeObject(forKey: "idGG")
+                UserDefaults.standard.removeObject(forKey: "idFB")
+                let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginController") as! LoginController
+                self.navigationController?.pushViewController(vc, animated: true)
+    }
+ 
     
 }

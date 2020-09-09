@@ -142,7 +142,7 @@ class LoginController: UIViewController {
     
     
       func nextToCategoryScreen(){
-         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "categoryScreen") as! CategoryViewController
+         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "tabBarhome") 
                    self.navigationController?.pushViewController(vc, animated: false)
         }
      

@@ -41,6 +41,16 @@ class ViewController: UIViewController ,UITextViewDelegate,UITableViewDelegate, 
         custom()
     }
     
+    override var hidesBottomBarWhenPushed: Bool {
+        get {
+            return true
+        }
+        set {
+            super.hidesBottomBarWhenPushed = newValue
+        }
+    }
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.imgAnimate.isHidden = true
