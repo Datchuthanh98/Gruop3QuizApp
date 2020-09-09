@@ -10,8 +10,8 @@ import UIKit
 
 class HistoryCustomcellTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var lblScore: UILabel!
     @IBOutlet weak var txtName: UILabel!
-    @IBOutlet weak var txtCategory: UILabel!
     @IBOutlet weak var txtScore: UILabel!
     @IBOutlet weak var txtResult: UILabel!
     override func awakeFromNib() {

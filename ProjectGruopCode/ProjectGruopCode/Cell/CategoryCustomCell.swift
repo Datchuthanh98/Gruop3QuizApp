@@ -17,11 +17,15 @@ class CategoryCustomCell: UITableViewCell {
     
     
 
-    @IBOutlet weak var viewCard: UIView!
-    @IBOutlet weak var txtCategory: UILabel!
+    @IBOutlet weak var viewContent: UIView!
+    @IBOutlet weak var viewTest: UIView!
+    @IBOutlet weak var lblCategory: UILabel!
+    @IBOutlet weak var imgCategory: UIImageView!
+    @IBOutlet weak var btnListQues: UIButton!
+    @IBOutlet weak var btnTryTest: UIButton!
+  
     var nameCategory = "Easy"
     
-    @IBOutlet weak var lblCategory: UILabel!
     
     weak var delegate: SmartDelegate?
     
