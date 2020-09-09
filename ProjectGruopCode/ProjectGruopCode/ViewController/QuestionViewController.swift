@@ -10,7 +10,7 @@ class QuestionViewController: UIViewController, UITableViewDataSource, UITableVi
     var listQuestion = [Question(id: 1, question: "", answer1: "", answer2: "", answer3: "", answer4: "", right: 1)]
     var ref = Database.database().reference()
     let dataTable = "1HxVup2Hiua1mhNIMNujHJhj4zatLWKs_WXQH5qiypZA"
-    @IBOutlet weak var lblCategory: UILabel!
+
     
     @IBOutlet weak var tblQuestion: UITableView!
     @IBOutlet weak var btnbacktohome: UIButton!
@@ -23,7 +23,7 @@ class QuestionViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "List Question"
-        lblCategory.text = "Level : \(self.category)"
+ 
         getData()
         tblQuestion.delegate = self
         tblQuestion.dataSource = self

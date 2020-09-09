@@ -32,12 +32,13 @@ class ConfigexamViewController: UIViewController {
 
     @IBAction func btnSave(_ sender: Any) {
         updateToFirebase()
-//        self.navigationController?.popViewController(animated: true)
+
     }
-    @IBAction func btnCancel(_ sender: Any) {
-         self.navigationController?.popViewController(animated: true)
-    }
+ 
     
+    @IBAction func btnCancel(_ sender: Any) {
+                self.navigationController?.popViewController(animated: true)
+    }
     
     func updateToFirebase(){
          let setting = [
