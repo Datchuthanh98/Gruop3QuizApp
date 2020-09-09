@@ -18,7 +18,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     
     
     
-    @IBOutlet weak var btnBacktoHome: UIButton!
+
     var listHistory = [History(id: "", userName: "",  score: 1, isPassed: "PASS")]
      let dataTable = "1HxVup2Hiua1mhNIMNujHJhj4zatLWKs_WXQH5qiypZA"
      var ref = Database.database().reference()
@@ -161,17 +161,4 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     
     
-  
- 
-
-    
-//    func sortData(){
-//        print(" 12112413213123 ")
-//        listHistory.sort(by: {$0.score > $1.score})
-//        tblHistory.reloadData()
-//        for history in listHistory {
-//            print(history.score)
-//        }
-//           tblHistory.reloadData()
-//    }
 }

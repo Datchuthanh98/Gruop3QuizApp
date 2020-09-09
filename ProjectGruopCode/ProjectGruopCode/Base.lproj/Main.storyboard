@@ -474,9 +474,6 @@
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
-                                <connections>
-                                    <action selector="btnBack:" destination="Y7h-bo-mYA" eventType="touchUpInside" id="1Av-z4-Fes"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -486,6 +483,10 @@
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="hlL-g5-HT6"/>
                     </navigationItem>
                     <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="inputQuestion" destination="qBH-L1-qms" id="6bT-md-vE2"/>
+                        <outlet property="inputTime" destination="Y9y-ar-at4" id="qPj-F1-BHk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Gr-et-Agr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -537,7 +538,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="btnCancel:" destination="E1m-j9-1Dr" eventType="touchUpInside" id="6sB-m3-ziq"/>
+                                    <action selector="btnCancel:" destination="E1m-j9-1Dr" eventType="touchUpInside" id="mG6-ie-5Do"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -548,6 +549,9 @@
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="jQ2-gg-SHB"/>
                     </navigationItem>
                     <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="inputName" destination="2n7-O7-fCs" id="ZN5-6k-lMi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xcg-19-mBv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -639,8 +643,8 @@
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="brA-NZ-c4R">
                                 <rect key="frame" x="150" y="73" width="248" height="36.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="textColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
