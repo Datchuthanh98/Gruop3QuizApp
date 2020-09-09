@@ -18,6 +18,7 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
     let dataTable = "1HxVup2Hiua1mhNIMNujHJhj4zatLWKs_WXQH5qiypZA"
     var refreshControl = UIRefreshControl()
 
+
     
     
     @IBOutlet weak var tblCategory: UITableView!
@@ -25,7 +26,6 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
     //MARK: Load Subview
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-//        custom()
     }
     
     //MARK: Load view
@@ -103,10 +103,6 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
     
     
     func nextoListQuestionScreen(){
-        
-     
-        
-        
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "listQuestionScreen") as! QuestionViewController
         vc.category = listCategory[choose]
         self.navigationController?.pushViewController(vc, animated: true)
@@ -135,6 +131,7 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
         })
     }
   
+
     @IBAction func clickHistoryExam(_ sender: Any) {
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "historyScreen") as! HistoryViewController
 
@@ -155,7 +152,10 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
         self.navigationController?.pushViewController(vc, animated: true)
     }
         
+
 }
+
+
 
 extension CategoryViewController : SmartDelegate {
     func didTapButton(with: String, nameCate: String) {

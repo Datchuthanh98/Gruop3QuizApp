@@ -21,7 +21,7 @@ class ResultViewController: UIViewController {
 
     @IBOutlet weak var gif: UIImageView!
     @IBOutlet weak var btnBack: UIButton!
-    @IBOutlet weak var lblNamePlayer: UILabel!
+
     @IBOutlet weak var txtScore: UILabel!
     
     override func viewDidLayoutSubviews() {
@@ -81,20 +81,11 @@ class ResultViewController: UIViewController {
                 //handle
             }
         } )
-        
-      
     }
-    
-    @IBAction func clickToHistory(_ sender: Any) {
-         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "historyScreen") as! HistoryViewController
-                      //           vc.score = self.score
-                      self.navigationController?.pushViewController(vc, animated: true)    }
-    
- 
     
     @IBAction func btnBacktoHome(_ sender: Any) {
         
-        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "categoryScreen") as! CategoryViewController
+        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "tabBarhome") 
                      //           vc.score = self.score
                      self.navigationController?.pushViewController(vc, animated: true)
     }

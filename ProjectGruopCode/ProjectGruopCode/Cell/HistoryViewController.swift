@@ -18,7 +18,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     
     
     
-    @IBOutlet weak var btnBacktoHome: UIButton!
+
     var listHistory = [History(id: "", userName: "",  score: 1, isPassed: "PASS")]
      let dataTable = "1HxVup2Hiua1mhNIMNujHJhj4zatLWKs_WXQH5qiypZA"
      var ref = Database.database().reference()
@@ -31,7 +31,6 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
   
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        custom()
     }
     
     override func viewDidLoad() {
@@ -125,10 +124,9 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
     }
-    
+       
    
-    
-    
+        
     func getData(){
           self.listHistory.removeAll()
         ref.child("history").child(self.selectCategory).observeSingleEvent(of: .value) { snapshot in
@@ -148,6 +146,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
                   self.listHistory.append(h)
             
               }
+            self.listHistory.sort(by: {$0.score > $1.score})
               self.tblHistory.reloadData()
           }
       }
@@ -164,12 +163,4 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     
     
-    @IBAction func btnBack(_ sender: Any) {
-         self.navigationController?.popViewController(animated: true)
-    }
-    
-    func custom() {
-        btnBacktoHome.layer.cornerRadius = btnBacktoHome.bounds.height / 2
-    }
-
 }
