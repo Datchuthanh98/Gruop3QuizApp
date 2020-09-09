@@ -132,15 +132,7 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
  
     }
     
-    @IBAction func btnSignOut(_ sender: Any) {
-        UserDefaults.standard.removeObject(forKey: "option")
-        UserDefaults.standard.removeObject(forKey: "nameUserSession")
-          UserDefaults.standard.removeObject(forKey: "idGG")
-        UserDefaults.standard.removeObject(forKey: "idFB")
-        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginController") as! LoginController
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-        
+   
 }
 
 extension CategoryViewController : SmartDelegate {

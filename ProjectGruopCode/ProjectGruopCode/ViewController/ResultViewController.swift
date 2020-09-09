@@ -85,13 +85,7 @@ class ResultViewController: UIViewController {
       
     }
     
-    @IBAction func clickToHistory(_ sender: Any) {
-         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "historyScreen") as! HistoryViewController
-                      //           vc.score = self.score
-                      self.navigationController?.pushViewController(vc, animated: true)    }
-    
- 
-    
+
     @IBAction func btnBacktoHome(_ sender: Any) {
         
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "categoryScreen") as! CategoryViewController
