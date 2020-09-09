@@ -107,7 +107,6 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryCell", for: indexPath) as! HistoryCustomcellTableViewCell
         cell.txtName.text = "Name : \(listHistory[indexPath.row].userName)"
         cell.txtScore.text = "Score : \(String(listHistory[indexPath.row].score))/10"
-        cell.txtCategory.text = "Id : \(listHistory[indexPath.row].id)"
         if(listHistory[indexPath.row].isPassed == "FAIL" ){
             cell.txtResult.textColor = UIColor.red
             cell.txtResult.text = "FAIL"
@@ -118,10 +117,13 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
             cell.txtResult.text = "PASS"
         }
         
+        cell.lblScore.layer.cornerRadius = cell.lblScore.bounds.height / 2
+        cell.lblScore.layer.masksToBounds = true
+        
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 150
     }
     
    

@@ -148,11 +148,11 @@
 			isa = PBXGroup;
 			children = (
 				7FA518312502053E004B05CA /* CategoryCustomCell.swift */,
+				7FA518342502053E004B05CA /* CategoryCustomCell.xib */,
 				7FA3AB3025022B2500294AD6 /* HistoryCustomcellTableViewCell.swift */,
 				7FA3AB2F25022B2500294AD6 /* HistoryCustomcellTableViewCell.xib */,
 				7FA518322502053E004B05CA /* QuestionCustomCell.xib */,
 				7FA518332502053E004B05CA /* QuestionCustomCell.swift */,
-				7FA518342502053E004B05CA /* CategoryCustomCell.xib */,
 				7F3776222500D65D00C752CB /* ExamTableViewCell.swift */,
 				7F3776232500D65D00C752CB /* ExamTableViewCell.xib */,
 			);

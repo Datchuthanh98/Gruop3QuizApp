@@ -47,7 +47,7 @@ class ViewController: UIViewController ,UITextViewDelegate,UITableViewDelegate, 
         tblContact.delegate = self
             tblContact.dataSource = self
 //        lblCategory.text = "The level exam : \(category)"
-        tblNamePlayer.text = "\(UserDefaults.standard.string(forKey: "nameUserSession") ?? "Underfined")"
+//        tblNamePlayer.text = "\(UserDefaults.standard.string(forKey: "nameUserSession") ?? "Underfined")"
         DispatchQueue.main.async {
             self.getData()
         }

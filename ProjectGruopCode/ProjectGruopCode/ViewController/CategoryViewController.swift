@@ -17,16 +17,15 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
     var ref = Database.database().reference()
     let dataTable = "1HxVup2Hiua1mhNIMNujHJhj4zatLWKs_WXQH5qiypZA"
     var refreshControl = UIRefreshControl()
-    @IBOutlet weak var lblUserName: UILabel!
+
     
     
     @IBOutlet weak var tblCategory: UITableView!
-    @IBOutlet weak var btnHistory: UIButton!
     
     //MARK: Load Subview
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        custom()
+//        custom()
     }
     
     //MARK: Load view
@@ -34,7 +33,7 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
         tblCategory.delegate = self
         tblCategory.dataSource = self
-          lblUserName.text = "\(UserDefaults.standard.string(forKey: "nameUserSession") ?? "Underfined")"
+//          lblUserName.text = "\(UserDefaults.standard.string(forKey: "nameUserSession") ?? "Underfined")"
         let nibName = UINib(nibName: "CategoryCustomCell", bundle: nil)
         tblCategory.register(nibName, forCellReuseIdentifier: "CategoryCell")
         GetListCategory()
@@ -58,11 +57,26 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryCustomCell
-        cell.viewCard.layer.cornerRadius = 10
-        cell.viewCard.layer.masksToBounds = true
         cell.delegate = self
         cell.lblCategory.text = listCategory[indexPath.row]
         cell.nameCategory = listCategory[indexPath.row]
+        
+        cell.imgCategory.layer.cornerRadius = 10
+        cell.btnTryTest.layer.cornerRadius = 10
+        cell.btnListQues.layer.cornerRadius = 10
+        
+        cell.viewContent.layer.cornerRadius = 10
+        cell.viewContent.layer.borderWidth = 1
+        cell.viewContent.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        
+        cell.btnTryTest.layer.cornerRadius = 10
+        cell.btnTryTest.layer.borderWidth = 2
+        cell.btnTryTest.layer.borderColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+        
+        cell.btnListQues.layer.cornerRadius = 10
+        cell.btnListQues.layer.borderWidth = 2
+        cell.btnListQues.layer.borderColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+        
         return cell
     }
     
@@ -79,7 +93,7 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
     
     
     func showDialogPick(){
-         let myAlert = UIAlertController(title: "you have not choose item", message: "please pick any item to continue", preferredStyle: .alert)
+         let myAlert = UIAlertController(title: "You have not choose item!", message: "Please pick any item to continue", preferredStyle: .alert)
                    let actionOnOk = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
                      UIAlertAction in
                    //add your code here to execute while clicking ok button
@@ -127,10 +141,10 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
                                      self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func custom() {
-        btnHistory.layer.cornerRadius = btnHistory.bounds.height / 2
- 
-    }
+//    func custom() {
+//        btnHistory.layer.cornerRadius = btnHistory.bounds.height / 2
+//
+//    }
     
     @IBAction func btnSignOut(_ sender: Any) {
         UserDefaults.standard.removeObject(forKey: "option")
