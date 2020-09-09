@@ -31,7 +31,6 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
   
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        custom()
     }
     
     override func viewDidLoad() {
@@ -162,13 +161,8 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     
     
-    @IBAction func btnBack(_ sender: Any) {
-         self.navigationController?.popViewController(animated: true)
-    }
-    
-    func custom() {
-        btnBacktoHome.layer.cornerRadius = btnBacktoHome.bounds.height / 2
-    }
+  
+ 
 
     
 //    func sortData(){

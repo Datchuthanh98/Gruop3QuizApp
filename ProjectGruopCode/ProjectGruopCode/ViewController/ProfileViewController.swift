@@ -22,4 +22,7 @@ class ProfileViewController: UIViewController {
     }
 
 
+    @IBAction func btnCancel(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
 }

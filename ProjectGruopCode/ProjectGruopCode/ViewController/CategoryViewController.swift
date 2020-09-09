@@ -17,16 +17,16 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
     var ref = Database.database().reference()
     let dataTable = "1HxVup2Hiua1mhNIMNujHJhj4zatLWKs_WXQH5qiypZA"
     var refreshControl = UIRefreshControl()
-    @IBOutlet weak var lblUserName: UILabel!
+  
     
     
     @IBOutlet weak var tblCategory: UITableView!
-    @IBOutlet weak var btnHistory: UIButton!
+  
     
     //MARK: Load Subview
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        custom()
+   
     }
     
     //MARK: Load view
@@ -34,7 +34,7 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
         tblCategory.delegate = self
         tblCategory.dataSource = self
-          lblUserName.text = "\(UserDefaults.standard.string(forKey: "nameUserSession") ?? "Underfined")"
+//          lblUserName.text = "\(UserDefaults.standard.string(forKey: "nameUserSession") ?? "Underfined")"
         let nibName = UINib(nibName: "CategoryCustomCell", bundle: nil)
         tblCategory.register(nibName, forCellReuseIdentifier: "CategoryCell")
         GetListCategory()
@@ -89,10 +89,6 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
     
     
     func nextoListQuestionScreen(){
-        
-     
-        
-        
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "listQuestionScreen") as! QuestionViewController
         vc.category = listCategory[choose]
         self.navigationController?.pushViewController(vc, animated: true)
@@ -121,19 +117,9 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
         })
     }
   
-    @IBAction func clickHistoryExam(_ sender: Any) {
-        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "historyScreen") as! HistoryViewController
-
-                                     self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    func custom() {
-        btnHistory.layer.cornerRadius = btnHistory.bounds.height / 2
- 
-    }
-    
-   
 }
+
+
 
 extension CategoryViewController : SmartDelegate {
     func didTapButton(with: String, nameCate: String) {

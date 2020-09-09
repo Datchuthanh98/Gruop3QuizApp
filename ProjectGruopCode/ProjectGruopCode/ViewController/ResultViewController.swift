@@ -88,7 +88,7 @@ class ResultViewController: UIViewController {
 
     @IBAction func btnBacktoHome(_ sender: Any) {
         
-        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "categoryScreen") as! CategoryViewController
+        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "tabBarhome") 
                      //           vc.score = self.score
                      self.navigationController?.pushViewController(vc, animated: true)
     }
