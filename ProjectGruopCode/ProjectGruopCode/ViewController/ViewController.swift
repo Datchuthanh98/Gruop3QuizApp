@@ -18,10 +18,11 @@ class ViewController: UIViewController ,UITextViewDelegate,UITableViewDelegate, 
     var state = 0
     var timeTest = 30
     var score = 0
+    var numberQuestion  = 10
     var choose = -1
     var timer : Timer?
     var timerLoading : Timer?
-  
+    let option = UserDefaults.standard.integer(forKey: "option")
   
     @IBOutlet weak var imgAnimate: UIImageView!
     
@@ -32,9 +33,6 @@ class ViewController: UIViewController ,UITextViewDelegate,UITableViewDelegate, 
     @IBOutlet weak var lblTime: UILabel!
     @IBOutlet weak var lblScore: UILabel!
     
-    
-    
-    @IBOutlet weak var tblNamePlayer: UILabel!
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -57,8 +55,9 @@ class ViewController: UIViewController ,UITextViewDelegate,UITableViewDelegate, 
         tblContact.delegate = self
             tblContact.dataSource = self
 //        lblCategory.text = "The level exam : \(category)"
-        tblNamePlayer.text = "\(UserDefaults.standard.string(forKey: "nameUserSession") ?? "Underfined")"
+//        tblNamePlayer.text = "\(UserDefaults.standard.string(forKey: "nameUserSession") ?? "Underfined")"
         DispatchQueue.main.async {
+            self.getSettingUser()
             self.getData()
         }
         runTimerGetData()
@@ -84,7 +83,7 @@ class ViewController: UIViewController ,UITextViewDelegate,UITableViewDelegate, 
     
   
     @IBAction func btnNext(_ sender: Any) {
-        if(state < 10){
+        if(state < numberQuestion){
                  if(choose == listQuestion[state].right-1){
                     showCorrectAnimation()
                      score += 1 ;
@@ -191,6 +190,34 @@ class ViewController: UIViewController ,UITextViewDelegate,UITableViewDelegate, 
     }
     
     
+    func getSettingUser(){
+        print("vao setting usser r ")
+        var id = ""
+        if(self.option == 1){
+           id = UserDefaults.standard.string(forKey: "idFB") ?? ""
+        } else {
+          id = UserDefaults.standard.string(forKey: "idGG") ?? ""
+        }
+        
+        ref.child("setting").child("1").observeSingleEvent(of: .value, with: { (snapshot) in
+          // Get user value
+          let value = snapshot.value as? NSDictionary
+          var time  = value?["time"] as? Int ?? 30
+             var numberQ  = value?["question"] as? Int ?? 10
+          print (" \(time) \(numberQ)")
+                  UserDefaults.standard.set(time, forKey: "Time")
+                  UserDefaults.standard.set(numberQ, forKey: "NumbersQ")
+                  self.timeTest = time
+                  self.numberQuestion =  numberQ
+
+          // ...
+          }) { (error) in
+            print(error.localizedDescription)
+        }
+     
+    }
+    
+    
     func showCorrectAnimation(){
         self.imgAnimate.image = UIImage.init(named: "correct")
         self.imgAnimate.isHidden = false
@@ -199,7 +226,6 @@ class ViewController: UIViewController ,UITextViewDelegate,UITableViewDelegate, 
            
                         self.imgAnimate.isHidden = true
         }
-        
     }
     
     func showIncorrectAnimation(){

@@ -81,11 +81,8 @@ class ResultViewController: UIViewController {
                 //handle
             }
         } )
-        
-      
     }
     
-
     @IBAction func btnBacktoHome(_ sender: Any) {
         
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "tabBarhome") 

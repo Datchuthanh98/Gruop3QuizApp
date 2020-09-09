@@ -9,6 +9,7 @@
 import UIKit
 import GoogleSignIn
 import FBSDKLoginKit
+import Firebase
 
 class LoginController: UIViewController {
 
@@ -18,7 +19,7 @@ class LoginController: UIViewController {
     
     
     var isLogined = UserDefaults.standard.integer(forKey: "option") ?? 0
-    
+    var ref = Database.database().reference()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -95,6 +96,10 @@ class LoginController: UIViewController {
                     UserDefaults.standard.set(nameOfUser, forKey: "nameUserSession")
                     UserDefaults.standard.set(1, forKey: "option")
                     
+//                    getSettingUser()
+                        
+            
+                    
                     self.nextToCategoryScreen()
                     var tmpEmailAdd = ""
                     
@@ -114,6 +119,7 @@ class LoginController: UIViewController {
             })
         }
     }
+
     
     func logoutGG() {
         // add signout Button
