@@ -164,7 +164,7 @@ class ViewController: UIViewController ,UITextViewDelegate,UITableViewDelegate, 
         let cell = tableView.dequeueReusableCell(withIdentifier: contactCellId, for: indexPath) as!ExamTableViewCell
         cell.txtAnswer.text = stateListAnswer[indexPath.row]
         cell.txtAnswer.layer.borderWidth = 2
-        cell.txtAnswer.layer.borderColor = UIColor.black.cgColor
+        cell.txtAnswer.layer.borderColor = #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)
         cell.txtAnswer.layer.cornerRadius = cell.txtAnswer.bounds.height / 2
         cell.txtAnswer.layer.masksToBounds = true
         return cell
