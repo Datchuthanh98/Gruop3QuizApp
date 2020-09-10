@@ -17,19 +17,17 @@ class SettingViewController: UIViewController {
         print("vao setting r")
     }
     
-   
-    @IBAction func clickTest(_ sender: Any) {
-        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "configExamScreen") as! ConfigexamViewController
-                                //           vc.score = self.score
-                                self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    @IBAction func clickUser(_ sender: Any) {
+
+    @IBAction func lcikProfile(_ sender: Any) {
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "profileScreen") as! ProfileViewController
         //           vc.score = self.score
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    @IBAction func clickConfigExam(_ sender: Any) {
+        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "configExamScreen") as! ConfigexamViewController
+                                         //           vc.score = self.score
+                                         self.navigationController?.pushViewController(vc, animated: true)
+    }
     
-   
     
 }
