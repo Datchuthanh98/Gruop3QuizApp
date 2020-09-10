@@ -10,6 +10,15 @@ import UIKit
 import Firebase
 
 class SettingViewController: UIViewController {
+    
+    @IBOutlet weak var btnProfileOutlet: UIButton!
+    @IBOutlet weak var btnSettingTestOutlet: UIButton!
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        btnProfileOutlet.layer.cornerRadius = btnProfileOutlet.bounds.height / 4
+        btnSettingTestOutlet.layer.cornerRadius = btnSettingTestOutlet.bounds.height / 4
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
