@@ -5,7 +5,6 @@
 //  Created by V000232 on 9/4/20.
 //  Copyright © 2020 Chu Thanh Dat. All rights reserved.
 //
-
 import UIKit
 
 class HistoryCustomcellTableViewCell: UITableViewCell {
