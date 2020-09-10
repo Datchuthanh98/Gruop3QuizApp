@@ -13,6 +13,7 @@ class ProfileViewController: UIViewController {
 
     let option = UserDefaults.standard.integer(forKey: "option")
     var nameUser = "\(UserDefaults.standard.string(forKey: "nameUserSession") ?? "Underfined")"
+    var imgAvatar = "\(UserDefaults.standard.string(forKey: "avatar") ?? "Underfined")"
     var id = ""
     var ref = Database.database().reference()
     @IBOutlet weak var inputName: UITextField!
@@ -20,6 +21,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         inputName.text = nameUser
         setProfile()
+        print(imgAvatar)
     }
     
 
@@ -30,9 +32,6 @@ class ProfileViewController: UIViewController {
             }else {
             updateToFirebase()
             }
-        
-        
-//          self.navigationController?.popViewController(animated: true)
     }
 
     @IBAction func btnCancel(_ sender: Any) {

@@ -9,26 +9,37 @@
 import UIKit
 
 class HistoryCustomcellTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var lblScore: UILabel!
+    
+    
     @IBOutlet weak var txtName: UILabel!
     @IBOutlet weak var txtScore: UILabel!
     @IBOutlet weak var txtResult: UILabel!
+    @IBOutlet weak var txtSTT: UILabel!
+    
+    var isSetRank = false
     override func awakeFromNib() {
         super.awakeFromNib()
         
-//        self.layer.borderWidth = 1
+        //        self.layer.borderWidth = 1
         self.layer.cornerRadius = 20
         self.view.layer.cornerRadius = 20
-       
+        
         
         // Initialization code
     }
+    
+    
+    func setRank(rank : Int){
+        txtSTT.text = String(rank)
+    }
+    
+    
+    
     @IBOutlet weak var view: UIView!
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
