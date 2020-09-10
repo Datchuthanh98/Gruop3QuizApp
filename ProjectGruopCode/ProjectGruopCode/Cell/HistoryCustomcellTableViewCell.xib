@@ -58,8 +58,8 @@
                                     <constraint firstItem="gW9-Et-hX8" firstAttribute="centerX" secondItem="HE3-sG-iQr" secondAttribute="centerX" id="fpD-52-qCg"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Result: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wE9-u6-XOV">
-                                <rect key="frame" x="150" y="145" width="51" height="35"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time Do Test" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wE9-u6-XOV">
+                                <rect key="frame" x="150" y="145" width="375.5" height="35"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -76,16 +76,10 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time : 30 seconds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w4k-iT-9Kd">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time Complete : 30 seconds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w4k-iT-9Kd">
                                 <rect key="frame" x="150" y="100" width="355.5" height="35"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PASS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KB0-ZG-OpN">
-                                <rect key="frame" x="206" y="145" width="37.5" height="35"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" red="0.49851677550000001" green="0.98039215690000003" blue="0.3563766988" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -93,7 +87,6 @@
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="gaL-Fk-aLX" secondAttribute="bottom" constant="30" id="24t-lv-9c5"/>
                             <constraint firstAttribute="bottom" secondItem="wE9-u6-XOV" secondAttribute="bottom" constant="10" id="3Ug-7r-SN9"/>
-                            <constraint firstItem="KB0-ZG-OpN" firstAttribute="height" secondItem="wE9-u6-XOV" secondAttribute="height" id="Axn-mI-WR4"/>
                             <constraint firstItem="HE3-sG-iQr" firstAttribute="width" secondItem="IeF-fk-Dsc" secondAttribute="width" multiplier="0.15" id="CdB-bO-ZjY"/>
                             <constraint firstItem="w4k-iT-9Kd" firstAttribute="leading" secondItem="gaL-Fk-aLX" secondAttribute="trailing" constant="10" id="L82-5L-gj1"/>
                             <constraint firstItem="xok-0c-3TP" firstAttribute="height" secondItem="w4k-iT-9Kd" secondAttribute="height" id="LiB-Xy-fd8"/>
@@ -102,14 +95,13 @@
                             <constraint firstItem="gaL-Fk-aLX" firstAttribute="leading" secondItem="IeF-fk-Dsc" secondAttribute="leading" constant="10" id="OrZ-0Q-YYw"/>
                             <constraint firstItem="HE3-sG-iQr" firstAttribute="leading" secondItem="xok-0c-3TP" secondAttribute="trailing" constant="20" id="Pbl-Az-6pb"/>
                             <constraint firstAttribute="trailing" secondItem="HE3-sG-iQr" secondAttribute="trailing" constant="10" id="R1T-xX-sHA"/>
-                            <constraint firstItem="KB0-ZG-OpN" firstAttribute="leading" secondItem="wE9-u6-XOV" secondAttribute="trailing" constant="5" id="Vft-fg-4ea"/>
                             <constraint firstItem="HE3-sG-iQr" firstAttribute="leading" secondItem="TLK-Oi-n7l" secondAttribute="trailing" constant="20" id="WoZ-Kh-fKB"/>
                             <constraint firstItem="wE9-u6-XOV" firstAttribute="leading" secondItem="gaL-Fk-aLX" secondAttribute="trailing" constant="10" id="Xu4-aY-ltm"/>
                             <constraint firstItem="gaL-Fk-aLX" firstAttribute="top" secondItem="IeF-fk-Dsc" secondAttribute="top" constant="30" id="XzG-Pr-hN6"/>
-                            <constraint firstAttribute="bottom" secondItem="KB0-ZG-OpN" secondAttribute="bottom" constant="10" id="cnf-kL-0gS"/>
                             <constraint firstItem="xok-0c-3TP" firstAttribute="leading" secondItem="gaL-Fk-aLX" secondAttribute="trailing" constant="10" id="gmn-NF-ffr"/>
                             <constraint firstItem="xok-0c-3TP" firstAttribute="top" secondItem="TLK-Oi-n7l" secondAttribute="bottom" constant="10" id="jhI-MT-RQC"/>
                             <constraint firstItem="w4k-iT-9Kd" firstAttribute="top" secondItem="xok-0c-3TP" secondAttribute="bottom" constant="10" id="k0C-ui-EGP"/>
+                            <constraint firstItem="HE3-sG-iQr" firstAttribute="leading" secondItem="wE9-u6-XOV" secondAttribute="trailing" id="mEj-EN-wvg"/>
                             <constraint firstItem="TLK-Oi-n7l" firstAttribute="height" secondItem="xok-0c-3TP" secondAttribute="height" id="oym-LC-MbF"/>
                             <constraint firstAttribute="bottom" secondItem="HE3-sG-iQr" secondAttribute="bottom" constant="10" id="q5I-mq-CSW"/>
                             <constraint firstItem="HE3-sG-iQr" firstAttribute="top" secondItem="IeF-fk-Dsc" secondAttribute="top" constant="10" id="sAH-Dp-9C9"/>
@@ -132,9 +124,10 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="txtName" destination="TLK-Oi-n7l" id="a57-Vd-SJW"/>
-                <outlet property="txtResult" destination="KB0-ZG-OpN" id="pCK-dc-pTa"/>
                 <outlet property="txtSTT" destination="gW9-Et-hX8" id="m4f-g7-jIF"/>
                 <outlet property="txtScore" destination="xok-0c-3TP" id="6G9-r7-6rE"/>
+                <outlet property="txtTimeDo" destination="wE9-u6-XOV" id="dKc-ix-2hB"/>
+                <outlet property="txtTimeHistory" destination="w4k-iT-9Kd" id="eTs-hL-8eU"/>
                 <outlet property="view" destination="IeF-fk-Dsc" id="Pds-fK-06u"/>
             </connections>
             <point key="canvasLocation" x="259.4202898550725" y="84.375"/>
