@@ -131,9 +131,9 @@
             <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="lblScore" destination="gW9-Et-hX8" id="LaV-bg-fcj"/>
                 <outlet property="txtName" destination="TLK-Oi-n7l" id="a57-Vd-SJW"/>
                 <outlet property="txtResult" destination="KB0-ZG-OpN" id="pCK-dc-pTa"/>
+                <outlet property="txtSTT" destination="gW9-Et-hX8" id="m4f-g7-jIF"/>
                 <outlet property="txtScore" destination="xok-0c-3TP" id="6G9-r7-6rE"/>
                 <outlet property="view" destination="IeF-fk-Dsc" id="Pds-fK-06u"/>
             </connections>
