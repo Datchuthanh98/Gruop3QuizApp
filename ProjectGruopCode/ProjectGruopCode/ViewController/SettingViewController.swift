@@ -36,7 +36,7 @@ class SettingViewController: UIViewController {
     
 
     @IBAction func lcikProfile(_ sender: Any) {
-        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "profileScreen") as! ProfileViewController
+        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "tabarProfile") 
         //           vc.score = self.score
         self.navigationController?.pushViewController(vc, animated: true)
     }
