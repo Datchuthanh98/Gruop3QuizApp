@@ -20,7 +20,8 @@ class ResultViewController: UIViewController {
     var isPassed = ""
     let date = Date()
     var calendar = Calendar.current
-
+    var timeComplete = 0
+    var numberQuestion = 0
     
     @IBOutlet weak var gif: UIImageView!
     @IBOutlet weak var btnBack: UIButton!
@@ -39,17 +40,12 @@ class ResultViewController: UIViewController {
      
         savetoServer()
         // Do any additional setup after loading the view.
-        if(score >= 5){
+     
             gif.isHidden = false
             gif.loadGif(name: "ziazia")
-            self.txtScore.text = "Passed : \(self.score) /10 "
+            self.txtScore.text = "You finish exam with score : \(self.score)/\(self.numberQuestion) in \(timeComplete) second"
             self.txtScore.textColor = UIColor.green
-        }
-        else {
-            self.txtScore.text = "Failed : \(self.score) /10 "
-            self.txtScore.textColor = UIColor.red
-            gif.isHidden = true
-        }
+       
     }
     
 
@@ -62,26 +58,27 @@ class ResultViewController: UIViewController {
             self.id = UserDefaults.standard.string(forKey: "idGG") ?? ""
         }
         self.nameUser = UserDefaults.standard.string(forKey: "nameUserSession") ?? "Underfined"
-        if(score < 5){
-            isPassed = "FAIL"
-        }else {
-            isPassed = "PASS"
-        }
+    
     }
     
     func savetoServer(){
         setResult()
         var hour = calendar.component(.hour, from: date)
         var minute = calendar.component(.minute, from: date)
+           var day = calendar.component(.day, from: date)
+           var month = calendar.component(.month, from: date)
+           var yeah = calendar.component(.year, from: date)
+        
 
         
         
        let postHistory = [
         "id" : id,
         "userName" : nameUser,
+        "numberQuestion" : numberQuestion,
         "score" : score ,
-        "isPassed" : isPassed ,
-        "time" : "\(hour)-\(minute)"
+        "timeHistory" : "\(day)/\(month)/\(yeah)  \(hour):\(minute)" ,
+        "timeComplete" : timeComplete
         ] as [String : Any]
         
         ref.child("history").child(category).childByAutoId().setValue(postHistory,withCompletionBlock: { error , ref in
