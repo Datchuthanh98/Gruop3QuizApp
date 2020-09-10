@@ -59,6 +59,10 @@ class ConfigexamViewController: UIViewController {
         UserDefaults.standard.set(Int(inputTime.text!)!, forKey: "Time")
         UserDefaults.standard.set(Int(inputQuestion.text!)!, forKey: "NumbersQ")
          print("update thanh cong")
+        let alertController = UIAlertController(title: "Update setting exam sucessfully", message: nil, preferredStyle: .alert)
+           let confirmAction = UIAlertAction(title: "OK", style: .default) { (_) in}
+            alertController.addAction(confirmAction)
+        self.present(alertController, animated: true, completion: nil)
      }
      
      func setProfile(){

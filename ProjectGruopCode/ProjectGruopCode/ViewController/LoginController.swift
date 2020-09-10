@@ -115,10 +115,7 @@ class LoginController: UIViewController {
                         usrName = usrName.replacingOccurrences(of: " ", with: "")
                         tmpEmailAdd = usrName+"@facebook.com"
                     }
-                    
                 }
-                
-                
             })
         }
     }
@@ -176,6 +173,7 @@ class LoginController: UIViewController {
     func createProfileAccountFirebase(id : String , name : String , urlAvatar : String){
         let profile = [
             "name" : name,
+            "imgAvatar" : urlAvatar
             ] as [String : Any]
         
         ref.child("profile").child(String(id)).setValue(profile,withCompletionBlock: { error , ref in
