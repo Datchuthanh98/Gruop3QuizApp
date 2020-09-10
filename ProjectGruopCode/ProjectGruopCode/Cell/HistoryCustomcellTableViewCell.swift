@@ -13,9 +13,9 @@ class HistoryCustomcellTableViewCell: UITableViewCell {
     
     @IBOutlet weak var txtName: UILabel!
     @IBOutlet weak var txtScore: UILabel!
-    @IBOutlet weak var txtResult: UILabel!
     @IBOutlet weak var txtSTT: UILabel!
-    
+    @IBOutlet weak var txtTimeDo: UILabel!
+    @IBOutlet weak var txtTimeHistory: UILabel!
     var isSetRank = false
     override func awakeFromNib() {
         super.awakeFromNib()

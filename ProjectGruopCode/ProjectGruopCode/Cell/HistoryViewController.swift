@@ -17,11 +17,11 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     var listCategory = [""]
     var STT = 1 ;
     var stageRank = 1
-    var listRank = [1,2,3,4,5,6,7,8,9,10]
+    var listRank = [1]
     
     
     
-    var listHistory = [History(id: "", userName: "",  score: 1, isPassed: "PASS")]
+    var listHistory = [History(id: "", userName: "",  score: 1, numberQuestion:  1 ,timeComplete: 1,timeHistory: "")]
     let dataTable = "1HxVup2Hiua1mhNIMNujHJhj4zatLWKs_WXQH5qiypZA"
     var ref = Database.database().reference()
     
@@ -111,16 +111,10 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryCell", for: indexPath) as! HistoryCustomcellTableViewCell
         
         cell.txtName.text = "Name : \(listHistory[indexPath.row].userName)"
-        cell.txtScore.text = "Score : \(String(listHistory[indexPath.row].score))/10"
-        if(listHistory[indexPath.row].isPassed == "FAIL" ){
-            cell.txtResult.textColor = UIColor.red
-            cell.txtResult.text = "FAIL"
-            
-        }
-        else if (listHistory[indexPath.row].isPassed == "PASS"){
-            cell.txtResult.textColor = UIColor.green
-            cell.txtResult.text = "PASS"
-        }
+        cell.txtScore.text = "Score : \(String(listHistory[indexPath.row].score))/ \(String(listHistory[indexPath.row].score))"
+        cell.txtTimeHistory.text = "Create:  \(String(listHistory[indexPath.row].timeHistory))"
+        cell.txtTimeDo.text = "Time :  \(String(listHistory[indexPath.row].timeComplete))"
+        
         
         //MARK
         cell.setRank(rank : indexPath.row+1)
@@ -146,18 +140,20 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
                 let idUser = dict["id"] as! String
                 let userName = dict["userName"] as! String
                 let score = dict["score"] as! Int
-                let isPassed = dict["isPassed"] as! String
+                let timeComplete = dict["timeComplete"] as! Int
+                let timeHistory = dict["timeHistory"] as! String
+                let numberQuestion = dict["numberQuestion"] as! Int
                 
-                
-                
-                let h = History(id: idUser, userName: userName, score: score, isPassed: isPassed)
+                let h = History(id: idUser, userName: userName, score: score,numberQuestion: numberQuestion, timeComplete: timeComplete,timeHistory : timeHistory)
                 self.listHistory.append(h)
                 
             }
-            self.listHistory.sort(by: {$0.score > $1.score})
-//            let meme =  self.listHistory.prefix(10)
-//            self.listHistory.removeAll()
-//            self.listHistory += meme
+//            self.listHistory.sort(by: {$0.score > $1.score})
+             self.listHistory = self.listHistory.sorted{
+                a1, a2 in
+                return (a1.score, a2.timeComplete) > (a2.score, a1.timeComplete)
+            }
+
             self.tblHistory.reloadData()
         }
     }
