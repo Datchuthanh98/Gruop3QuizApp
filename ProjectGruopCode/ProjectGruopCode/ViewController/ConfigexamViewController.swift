@@ -21,13 +21,31 @@ class ConfigexamViewController: UIViewController {
     @IBOutlet weak var inputTime: UITextField!
     
     @IBOutlet weak var inputQuestion: UITextField!
+    @IBOutlet weak var btnCancelOutlet: UIButton!
+    @IBOutlet weak var btnSaveOutlet: UIButton!
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        btnSaveOutlet.layer.cornerRadius = btnSaveOutlet.bounds.height / 2
+        btnCancelOutlet.layer.cornerRadius = btnCancelOutlet.bounds.height / 2
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         inputTime.text = String(timeDefaut)
         inputQuestion.text = String(questionDefaut)
         // Do any additional setup after loading the view.
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapOnScreen))
+
+        view.addGestureRecognizer(tapGestureRecognizer)
     }
+    
+    @objc func tapOnScreen() {
+        inputTime.resignFirstResponder()
+        inputQuestion.resignFirstResponder()
+    }
+
     
 
     @IBAction func btnSave(_ sender: Any) {

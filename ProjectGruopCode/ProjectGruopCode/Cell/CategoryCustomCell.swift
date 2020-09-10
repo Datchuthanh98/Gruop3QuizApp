@@ -16,8 +16,6 @@ protocol SmartDelegate: class {
 class CategoryCustomCell: UITableViewCell {
     
     
-
-    @IBOutlet weak var viewContent: UIView!
     @IBOutlet weak var viewTest: UIView!
     @IBOutlet weak var lblCategory: UILabel!
     @IBOutlet weak var imgCategory: UIImageView!
