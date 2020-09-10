@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class HistoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate , UIPickerViewDelegate ,UIPickerViewDataSource{
+class HistoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate , UIPickerViewDelegate ,UIPickerViewDataSource, UITextFieldDelegate{
     
     
     
@@ -42,6 +42,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         //        inputCategory.isUserInteractionEnabled = false
         createPickerView()
         dismissPickerView()
+         self.inputCategory.delegate = self
         let nibName = UINib(nibName: "HistoryCustomcellTableViewCell", bundle: nil)
         tblHistory.register(nibName, forCellReuseIdentifier: "HistoryCell")
         GetListCategory()
@@ -58,6 +59,9 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         self.inputCategory.inputView = pickerView
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        return false
+    }
     
     func dismissPickerView() {
         let toolBar = UIToolbar()
