@@ -17,12 +17,36 @@ class ProfileViewController: UIViewController {
     var id = ""
     var ref = Database.database().reference()
     @IBOutlet weak var inputName: UITextField!
+    @IBOutlet weak var btnLogout: UIButton!
+    @IBOutlet weak var btnCancelOutlet: UIButton!
+    @IBOutlet weak var btnSaveOutlet: UIButton!
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        viewAvatar.layer.cornerRadius = viewAvatar.bounds.height / 2
+        btnLogout.layer.cornerRadius = btnLogout.bounds.height / 2
+        btnCancelOutlet.layer.cornerRadius = btnCancelOutlet.bounds.height / 2
+        btnSaveOutlet.layer.cornerRadius = btnSaveOutlet.bounds.height / 2
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         inputName.text = nameUser
         setProfile()
-      setAvatar()
+        setAvatar()
+        
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapOnScreen))
+
+        view.addGestureRecognizer(tapGestureRecognizer)
     }
+    
+    @objc func tapOnScreen() {
+        inputName.resignFirstResponder()
+    }
+
+
+    
     
     @IBOutlet weak var viewAvatar: UIImageView!
     
