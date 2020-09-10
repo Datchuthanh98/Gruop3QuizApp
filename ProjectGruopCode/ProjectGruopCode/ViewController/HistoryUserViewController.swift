@@ -9,16 +9,16 @@
 import UIKit
 import Firebase
 
-class HistoryUserViewController: UIViewController, UITableViewDataSource, UITableViewDelegate , UIPickerViewDelegate ,UIPickerViewDataSource{
+class HistoryUserViewController: UIViewController, UITableViewDataSource, UITableViewDelegate , UIPickerViewDelegate ,UIPickerViewDataSource, UITextFieldDelegate{
     
     
-    
+    var idUserLocal = UserDefaults.standard.string(forKey: "idGG") ?? ""
     var selectCategory = "Easy"
     var listCategory = [""]
     var STT = 1 ;
     var stageRank = 1
     var listRank = [1]
-    
+  
     
     
     var listHistory = [History(id: "", userName: "",avatar: "",  score: 1, numberQuestion:  1 ,timeComplete: 1,timeHistory: "")]
@@ -39,9 +39,8 @@ class HistoryUserViewController: UIViewController, UITableViewDataSource, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         inputCategory.text = selectCategory
-   
+        self.inputCategory.delegate = self
         createPickerView()
         dismissPickerView()
         let nibName = UINib(nibName: "HistoryUserViewCell", bundle: nil)
@@ -53,11 +52,18 @@ class HistoryUserViewController: UIViewController, UITableViewDataSource, UITabl
         
     }
     
+   
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        return false
+    }
+    
     func createPickerView() {
         let pickerView = UIPickerView()
         pickerView.delegate = self
         pickerView.dataSource = self
         self.inputCategory.inputView = pickerView
+        self.inputCategory.isUserInteractionEnabled = false
     }
     
     
@@ -73,7 +79,7 @@ class HistoryUserViewController: UIViewController, UITableViewDataSource, UITabl
         toolBar.setItems([button], animated: true)
         toolBar.isUserInteractionEnabled = true
         self.inputCategory.inputAccessoryView = toolBar
-    }
+        self.inputCategory.isUserInteractionEnabled = true    }
     @objc func action(sender: UIBarButtonItem) {
         view.endEditing(true)
         getData()
@@ -111,29 +117,12 @@ class HistoryUserViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryUserCell", for: indexPath) as! HistoryUserViewCell
-      
+        
+        cell.txtScore.text = "Score : \(String(listHistory[indexPath.row].score))/ \(String(listHistory[indexPath.row].score))"
+       cell.txtTimeTest.text = "Create:  \(String(listHistory[indexPath.row].timeHistory))"
+      cell.txtTimeComplete.text = "Time :  \(String(listHistory[indexPath.row].timeComplete))"
         
 
-         
-        
-        
-        
-//        cell.txtName.text = "Name : \(listHistory[indexPath.row].userName)"
-        cell.txtScore.text = "Score : \(String(listHistory[indexPath.row].score))/ \(String(listHistory[indexPath.row].score))"
-//        cell.txtTimeHistory.text = "Create:  \(String(listHistory[indexPath.row].timeHistory))"
-//        cell.txtTimeDo.text = "Time :  \(String(listHistory[indexPath.row].timeComplete))"
-        
-  
-        
-        
- 
-      
-        
-        
-        
-        //MARK
-        
-        
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -151,20 +140,21 @@ class HistoryUserViewController: UIViewController, UITableViewDataSource, UITabl
                     return
                 }
                 let idUser = dict["id"] as! String
-                let userName = dict["userName"] as! String
-                let avatar = dict["avatar"] as! String
-                let score = dict["score"] as! Int
-                let timeComplete = dict["timeComplete"] as! Int
-                let timeHistory = dict["timeHistory"] as! String
-                let numberQuestion = dict["numberQuestion"] as! Int
-                let h = History(id: idUser, userName: userName, avatar: avatar, score: score,numberQuestion: numberQuestion, timeComplete: timeComplete,timeHistory : timeHistory)
-                self.listHistory.append(h)
+                if(idUser == self.idUserLocal) {
+                     let userName = dict["userName"] as! String
+                                   let avatar = dict["avatar"] as! String
+                                   let score = dict["score"] as! Int
+                                   let timeComplete = dict["timeComplete"] as! Int
+                                   let timeHistory = dict["timeHistory"] as! String
+                                   let numberQuestion = dict["numberQuestion"] as! Int
+                                   let h = History(id: idUser, userName: userName, avatar: avatar, score: score,numberQuestion: numberQuestion, timeComplete: timeComplete,timeHistory : timeHistory)
+                                                                   self.listHistory.append(h)
+                    
+                }
+               
                 
             }
-            self.listHistory = self.listHistory.sorted{
-                a1, a2 in
-                return (a1.score, a2.timeComplete) > (a2.score, a1.timeComplete)
-            }
+          
             
             self.tblHistory.reloadData()
         }
@@ -182,4 +172,8 @@ class HistoryUserViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     
+    @IBAction func btnBack(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+        
+    }
 }
