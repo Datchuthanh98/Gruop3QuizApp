@@ -19,6 +19,7 @@ class ViewController: UIViewController ,UITextViewDelegate,UITableViewDelegate, 
     var timer : Timer?
     var timerLoading : Timer?
     let option = UserDefaults.standard.integer(forKey: "option")
+    var timeComplete = 0
     
     @IBOutlet weak var imgAnimate: UIImageView!
     
@@ -91,12 +92,7 @@ class ViewController: UIViewController ,UITextViewDelegate,UITableViewDelegate, 
         }
     }
     
-    
-    @IBAction func btnNext(_ sender: Any) {
-        
-    }
-    
-    
+
     func getData(){
         self.ref.child(self.dataTable).child(category).observeSingleEvent(of: .value) { snapshot in
             for case let child as DataSnapshot in snapshot.children {
@@ -127,6 +123,7 @@ class ViewController: UIViewController ,UITextViewDelegate,UITableViewDelegate, 
     }
     
     @objc func updateTimer(){
+        timeComplete += 1
         timeTest -= 1
         lblTime.text = String(timeTest)
         if(timeTest == 0){
@@ -148,6 +145,8 @@ class ViewController: UIViewController ,UITextViewDelegate,UITableViewDelegate, 
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "resultScreen") as! ResultViewController
         vc.score = self.score
         vc.category = self.category
+        vc.timeComplete = self.timeComplete
+        vc.numberQuestion = self.numberQuestion
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
