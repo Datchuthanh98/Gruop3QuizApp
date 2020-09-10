@@ -68,5 +68,5 @@ class ConfigexamViewController: UIViewController {
                    self.id = UserDefaults.standard.string(forKey: "idGG") ?? ""
                }
      }
- 
+
 }
