@@ -4,10 +4,6 @@ import UIKit
 import Firebase
 
 class ViewController: UIViewController ,UITextViewDelegate,UITableViewDelegate, UITableViewDataSource {
-    
-    
-   
-
     @IBOutlet weak var loading: UIActivityIndicatorView!
     let contactCellId = "ExamTableViewCell"
     var stateListAnswer = ["1","2","3","4"]
@@ -23,7 +19,7 @@ class ViewController: UIViewController ,UITextViewDelegate,UITableViewDelegate, 
     var timer : Timer?
     var timerLoading : Timer?
     let option = UserDefaults.standard.integer(forKey: "option")
-  
+    
     @IBOutlet weak var imgAnimate: UIImageView!
     
     @IBOutlet weak var btnNext: UIButton!
@@ -36,7 +32,6 @@ class ViewController: UIViewController ,UITextViewDelegate,UITableViewDelegate, 
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        custom()
     }
     
     override var hidesBottomBarWhenPushed: Bool {
@@ -47,15 +42,13 @@ class ViewController: UIViewController ,UITextViewDelegate,UITableViewDelegate, 
             super.hidesBottomBarWhenPushed = newValue
         }
     }
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.imgAnimate.isHidden = true
         tblContact.delegate = self
-            tblContact.dataSource = self
-//        lblCategory.text = "The level exam : \(category)"
-//        tblNamePlayer.text = "\(UserDefaults.standard.string(forKey: "nameUserSession") ?? "Underfined")"
+        tblContact.dataSource = self
         DispatchQueue.main.async {
             self.getSettingUser()
             self.getData()
@@ -64,13 +57,13 @@ class ViewController: UIViewController ,UITextViewDelegate,UITableViewDelegate, 
         tblContact.register(UINib.init(nibName: contactCellId, bundle: nil), forCellReuseIdentifier: contactCellId)
         tblContact.reloadData()
         self.tblContact.isScrollEnabled = false;
-            }
+    }
     
     
     
     func nextQuestion(){
         state += 1
-        lblStateQuestion.text = "\(state)/10"
+        lblStateQuestion.text = "\(state) / \(numberQuestion)"
         stateListAnswer.removeAll()
         stateListAnswer.append(listQuestion[state].answer1)
         stateListAnswer.append(listQuestion[state].answer2)
@@ -81,22 +74,26 @@ class ViewController: UIViewController ,UITextViewDelegate,UITableViewDelegate, 
     }
     
     
-  
-    @IBAction func btnNext(_ sender: Any) {
+    func next(){
         if(state < numberQuestion){
-                 if(choose == listQuestion[state].right-1){
-                    showCorrectAnimation()
-                     score += 1 ;
-                     lblScore.text = "Score : \(score)"
-                     nextQuestion()
-                 }else{
-                    showIncorrectAnimation()
-                     nextQuestion()
-                 }
-                 choose = -1
-                 }else{
-                  nextToResult()
-             }
+            if(choose == listQuestion[state].right-1){
+                showCorrectAnimation()
+                score += 1 ;
+                lblScore.text = "Score : \(score)"
+                nextQuestion()
+            }else{
+                showIncorrectAnimation()
+                nextQuestion()
+            }
+            choose = -1
+        }else{
+            nextToResult()
+        }
+    }
+    
+    
+    @IBAction func btnNext(_ sender: Any) {
+        
     }
     
     
@@ -121,37 +118,37 @@ class ViewController: UIViewController ,UITextViewDelegate,UITableViewDelegate, 
     }
     
     
-     func runTimer(){
-               timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
-       }
+    func runTimer(){
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+    }
     
-     func runTimerGetData(){
-                  timerLoading = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(checkLoadData), userInfo: nil, repeats: true)
-          }
+    func runTimerGetData(){
+        timerLoading = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(checkLoadData), userInfo: nil, repeats: true)
+    }
     
-       @objc func updateTimer(){
-           timeTest -= 1
-           lblTime.text = String(timeTest)
-           if(timeTest == 0){
-              nextToResult()
-           }
-       }
+    @objc func updateTimer(){
+        timeTest -= 1
+        lblTime.text = String(timeTest)
+        if(timeTest == 0){
+            nextToResult()
+        }
+    }
     
-      @objc func checkLoadData(){
+    @objc func checkLoadData(){
         if(self.listQuestion.count >= 10 ){
             timerLoading?.invalidate()
             loading.isHidden = true
             listQuestion.shuffled()
             runTimer()
             nextQuestion()
-         }
+        }
     }
     func nextToResult(){
         timer?.invalidate()
-     let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "resultScreen") as! ResultViewController
+        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "resultScreen") as! ResultViewController
         vc.score = self.score
         vc.category = self.category
-               self.navigationController?.pushViewController(vc, animated: true)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     
@@ -176,6 +173,10 @@ class ViewController: UIViewController ,UITextViewDelegate,UITableViewDelegate, 
     
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
         choose = indexPath.row
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            self.next()
+        }
+        
     }
     
     
@@ -183,38 +184,30 @@ class ViewController: UIViewController ,UITextViewDelegate,UITableViewDelegate, 
         return 70
     }
     
-
-    
-         func custom() {
-
-    }
-    
-    
     func getSettingUser(){
         print("vao setting usser r ")
         var id = ""
         if(self.option == 1){
-           id = UserDefaults.standard.string(forKey: "idFB") ?? ""
+            id = UserDefaults.standard.string(forKey: "idFB") ?? ""
         } else {
-          id = UserDefaults.standard.string(forKey: "idGG") ?? ""
+            id = UserDefaults.standard.string(forKey: "idGG") ?? ""
         }
         
         ref.child("setting").child("1").observeSingleEvent(of: .value, with: { (snapshot) in
-          // Get user value
-          let value = snapshot.value as? NSDictionary
-          var time  = value?["time"] as? Int ?? 30
-             var numberQ  = value?["question"] as? Int ?? 10
-          print (" \(time) \(numberQ)")
-                  UserDefaults.standard.set(time, forKey: "Time")
-                  UserDefaults.standard.set(numberQ, forKey: "NumbersQ")
-                  self.timeTest = time
-                  self.numberQuestion =  numberQ
-
-          // ...
-          }) { (error) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            var time  = value?["time"] as? Int ?? 30
+            var numberQ  = value?["question"] as? Int ?? 10
+            UserDefaults.standard.set(time, forKey: "Time")
+            UserDefaults.standard.set(numberQ, forKey: "NumbersQ")
+            self.timeTest = time
+            self.numberQuestion =  numberQ
+            
+            // ...
+        }) { (error) in
             print(error.localizedDescription)
         }
-     
+        
     }
     
     
@@ -223,19 +216,19 @@ class ViewController: UIViewController ,UITextViewDelegate,UITableViewDelegate, 
         self.imgAnimate.isHidden = false
         let seconds = 0.25
         DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
-           
-                        self.imgAnimate.isHidden = true
+            
+            self.imgAnimate.isHidden = true
         }
     }
     
     func showIncorrectAnimation(){
         self.imgAnimate.image = UIImage.init(named: "incorrect")
-            self.imgAnimate.isHidden = false
-            let seconds = 0.25
-            DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
-               
-                            self.imgAnimate.isHidden = true
-            }
+        self.imgAnimate.isHidden = false
+        let seconds = 0.25
+        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+            
+            self.imgAnimate.isHidden = true
+        }
     }
 }
 
