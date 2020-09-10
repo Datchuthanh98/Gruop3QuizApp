@@ -13,6 +13,7 @@ class ResultViewController: UIViewController {
     
     var score = 0
     let option = UserDefaults.standard.integer(forKey: "option")
+    var avatar = "\(UserDefaults.standard.string(forKey: "avatar") ?? "Underfined")"
     var id = ""
     var nameUser = ""
     var ref = Database.database().reference()
@@ -75,6 +76,7 @@ class ResultViewController: UIViewController {
        let postHistory = [
         "id" : id,
         "userName" : nameUser,
+        "avatar" : avatar,
         "numberQuestion" : numberQuestion,
         "score" : score ,
         "timeHistory" : "\(day)/\(month)/\(yeah)  \(hour):\(minute)" ,
