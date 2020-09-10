@@ -93,7 +93,7 @@ class LoginController: UIViewController {
                     let nameOfUser = picutreDic.object(forKey: "name") as! String
                     let idOfUser = picutreDic.object(forKey: "id") as! String
                     
-                    self.checkAccountExist(id: idOfUser, name: nameOfUser)
+                    self.checkAccountExist(id: idOfUser, name: nameOfUser , urlAvatar:  "123")
                     
                     UserDefaults.standard.set(idOfUser, forKey: "idFB")
                     UserDefaults.standard.set(nameOfUser, forKey: "nameUserSession")
@@ -115,10 +115,7 @@ class LoginController: UIViewController {
                         usrName = usrName.replacingOccurrences(of: " ", with: "")
                         tmpEmailAdd = usrName+"@facebook.com"
                     }
-                    
                 }
-                
-                
             })
         }
     }
@@ -156,14 +153,14 @@ class LoginController: UIViewController {
     }
     
     
-    func checkAccountExist(id : String , name :String){
+    func checkAccountExist(id : String , name :String , urlAvatar : String){
         ref.child("profile").observeSingleEvent(of: .value, with: { (snapshot) in
             
             if snapshot.hasChild(id){
                 print("account exist")
                 
             }else{
-                self.createProfileAccountFirebase(id: id, name: name)
+                self.createProfileAccountFirebase(id: id, name: name ,urlAvatar: urlAvatar)
                 self.createSettingAccountFirebase(id: id)
                 print("do create exist")
             }
@@ -173,9 +170,10 @@ class LoginController: UIViewController {
         
     }
     
-    func createProfileAccountFirebase(id : String , name : String){
+    func createProfileAccountFirebase(id : String , name : String , urlAvatar : String){
         let profile = [
             "name" : name,
+            "imgAvatar" : urlAvatar
             ] as [String : Any]
         
         ref.child("profile").child(String(id)).setValue(profile,withCompletionBlock: { error , ref in
@@ -203,9 +201,6 @@ class LoginController: UIViewController {
                 
             }
         } )
-        
-        
-        
     }
 }
 
@@ -214,12 +209,14 @@ extension LoginController: GIDSignInDelegate {
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         let currentUser = GIDSignIn.sharedInstance()?.currentUser
         
+        let urlImage = GIDSignIn.sharedInstance()?.currentUser.profile.imageURL(withDimension: 120 )!.absoluteString ?? ""
         let userIDGoogle = String(currentUser!.userID)
         let nameIDGoogle = String(currentUser!.profile.name)
-        checkAccountExist(id: userIDGoogle, name: nameIDGoogle)
+        checkAccountExist(id: userIDGoogle, name: nameIDGoogle , urlAvatar: String(urlImage))
         UserDefaults.standard.set(currentUser!.userID, forKey: "idGG")
         UserDefaults.standard.set(currentUser!.profile.name, forKey: "nameUserSession")
         UserDefaults.standard.set(2, forKey: "option")
+        UserDefaults.standard.set(urlImage, forKey: "avatar")
         nextToCategoryScreen()
     }
 }

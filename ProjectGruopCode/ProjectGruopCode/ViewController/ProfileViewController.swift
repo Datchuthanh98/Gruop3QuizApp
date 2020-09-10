@@ -13,6 +13,7 @@ class ProfileViewController: UIViewController {
 
     let option = UserDefaults.standard.integer(forKey: "option")
     var nameUser = "\(UserDefaults.standard.string(forKey: "nameUserSession") ?? "Underfined")"
+    var imgAvatar = "\(UserDefaults.standard.string(forKey: "avatar") ?? "Underfined")"
     var id = ""
     var ref = Database.database().reference()
     @IBOutlet weak var inputName: UITextField!
@@ -20,6 +21,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         inputName.text = nameUser
         setProfile()
+        print(imgAvatar)
     }
     
 
@@ -30,9 +32,6 @@ class ProfileViewController: UIViewController {
             }else {
             updateToFirebase()
             }
-        
-        
-//          self.navigationController?.popViewController(animated: true)
     }
 
     @IBAction func btnCancel(_ sender: Any) {
@@ -52,8 +51,12 @@ class ProfileViewController: UIViewController {
                    }
                } )
         
+        
         UserDefaults.standard.set(inputName.text, forKey: "nameUserSession")
-        print("update thanh cong")
+              let alertController = UIAlertController(title: "Update profile sucessfully", message: nil, preferredStyle: .alert)
+        let confirmAction = UIAlertAction(title: "OK", style: .default) { (_) in}
+         alertController.addAction(confirmAction)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     func setProfile(){
@@ -65,11 +68,38 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func signOut(_ sender: Any) {
-        UserDefaults.standard.removeObject(forKey: "option")
-                         UserDefaults.standard.removeObject(forKey: "nameUserSession")
-                           UserDefaults.standard.removeObject(forKey: "idGG")
-                         UserDefaults.standard.removeObject(forKey: "idFB")
-                         let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginController") as! LoginController
-                         self.navigationController?.pushViewController(vc, animated: true)
+        
+        showAlertSignout()
+
     }
+    
+    func setAvatar(){ 
+        let url = URL(string: self.imgAvatar)
+              DispatchQueue.global().async {
+                  let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                  DispatchQueue.main.async {
+//                      cell.imgAvatar.image = UIImage(data: data!)
+                  }
+              }
+    }
+    
+    func showAlertSignout() {
+         let alertController = UIAlertController(title: "Do you want exit", message: nil, preferredStyle: .alert)
+         let confirmAction = UIAlertAction(title: "OK", style: .default) { (_) in
+                    UserDefaults.standard.removeObject(forKey: "option")
+                             UserDefaults.standard.removeObject(forKey: "nameUserSession")
+                               UserDefaults.standard.removeObject(forKey: "idGG")
+                             UserDefaults.standard.removeObject(forKey: "idFB")
+                             let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginController") as! LoginController
+                             self.navigationController?.pushViewController(vc, animated: true)
+         }
+         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
+            
+            print("cancel")
+        }
+      
+         alertController.addAction(confirmAction)
+         alertController.addAction(cancelAction)
+         self.present(alertController, animated: true, completion: nil)
+     }
 }

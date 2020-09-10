@@ -18,7 +18,10 @@ class ResultViewController: UIViewController {
     var ref = Database.database().reference()
     var category = ""
     var isPassed = ""
+    let date = Date()
+    var calendar = Calendar.current
 
+    
     @IBOutlet weak var gif: UIImageView!
     @IBOutlet weak var btnBack: UIButton!
 
@@ -49,6 +52,7 @@ class ResultViewController: UIViewController {
         }
     }
     
+
   
     
     func setResult(){
@@ -67,11 +71,17 @@ class ResultViewController: UIViewController {
     
     func savetoServer(){
         setResult()
+        var hour = calendar.component(.hour, from: date)
+        var minute = calendar.component(.minute, from: date)
+
+        
+        
        let postHistory = [
         "id" : id,
         "userName" : nameUser,
         "score" : score ,
         "isPassed" : isPassed ,
+        "time" : "\(hour)-\(minute)"
         ] as [String : Any]
         
         ref.child("history").child(category).childByAutoId().setValue(postHistory,withCompletionBlock: { error , ref in
