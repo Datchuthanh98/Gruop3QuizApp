@@ -12,7 +12,7 @@ import FBSDKLoginKit
 import Firebase
 
 class LoginController: UIViewController {
-
+    
     @IBOutlet weak var btnLoginFacebook: UIButton!
     @IBOutlet weak var btnLoginGoogle: UIButton!
     
@@ -22,9 +22,11 @@ class LoginController: UIViewController {
     var ref = Database.database().reference()
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         custom()
         autoLogin()
+        
+        
         // gán signin vào controller này
         GIDSignIn.sharedInstance().presentingViewController = self
         
@@ -39,7 +41,7 @@ class LoginController: UIViewController {
     }
     
     @IBAction func btnFacebookTapped(_ sender: Any) {
-     
+        
         
         fbLogin()
     }
@@ -51,7 +53,7 @@ class LoginController: UIViewController {
     
     // đăng xuất gg
     @IBAction func didTapSignOut(_ sender: UIButton) {
-      GIDSignIn.sharedInstance().signOut()
+        GIDSignIn.sharedInstance().signOut()
         print("out google")
     }
     
@@ -89,16 +91,17 @@ class LoginController: UIViewController {
                     
                     
                     let nameOfUser = picutreDic.object(forKey: "name") as! String
-                      let idOfUser = picutreDic.object(forKey: "id") as! String
-               
+                    let idOfUser = picutreDic.object(forKey: "id") as! String
+                    
+                    self.checkAccountExist(id: idOfUser, name: nameOfUser)
                     
                     UserDefaults.standard.set(idOfUser, forKey: "idFB")
                     UserDefaults.standard.set(nameOfUser, forKey: "nameUserSession")
                     UserDefaults.standard.set(1, forKey: "option")
+          
+                    //                    getSettingUser()
                     
-//                    getSettingUser()
-                        
-            
+                    
                     
                     self.nextToCategoryScreen()
                     var tmpEmailAdd = ""
@@ -115,11 +118,11 @@ class LoginController: UIViewController {
                     
                 }
                 
-             
+                
             })
         }
     }
-
+    
     
     func logoutGG() {
         // add signout Button
@@ -132,7 +135,7 @@ class LoginController: UIViewController {
         view.addSubview(gSignOutGoogle)
     }
     
-
+    
     func custom() {
         // custom btn login facebook
         btnLoginFacebook.backgroundColor = UIColor.init(red: 51.0/255, green: 66.0/255, blue: 145.0/255, alpha: 1)
@@ -147,14 +150,63 @@ class LoginController: UIViewController {
     }
     
     
-      func nextToCategoryScreen(){
-         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "tabBarhome") 
-                   self.navigationController?.pushViewController(vc, animated: false)
-        }
-     
+    func nextToCategoryScreen(){
+        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "tabBarhome")
+        self.navigationController?.pushViewController(vc, animated: false)
+    }
     
     
-
+    func checkAccountExist(id : String , name :String){
+        ref.child("profile").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if snapshot.hasChild(id){
+                print("account exist")
+                
+            }else{
+                self.createProfileAccountFirebase(id: id, name: name)
+                self.createSettingAccountFirebase(id: id)
+                print("do create exist")
+            }
+            
+            
+        })
+        
+    }
+    
+    func createProfileAccountFirebase(id : String , name : String){
+        let profile = [
+            "name" : name,
+            ] as [String : Any]
+        
+        ref.child("profile").child(String(id)).setValue(profile,withCompletionBlock: { error , ref in
+            if error == nil {
+                self.dismiss(animated: true, completion: nil)
+            }else{
+                //handle
+            }
+        } )
+        
+    }
+    
+    
+    
+    func createSettingAccountFirebase(id : String){
+        let setting = [
+            "time" : 30 ,
+            "question" : 10
+            ] as [String : Any]
+        
+        ref.child("setting").child(String(id)).setValue(setting,withCompletionBlock: { error , ref in
+            if error == nil {
+                self.dismiss(animated: true, completion: nil)
+            }else{
+                
+            }
+        } )
+        
+        
+        
+    }
 }
 
 //MARK: aaa
@@ -162,11 +214,12 @@ extension LoginController: GIDSignInDelegate {
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         let currentUser = GIDSignIn.sharedInstance()?.currentUser
         
-        let userIDGoogle = currentUser?.userID
-        let nameIDGoogle = currentUser?.profile.name
-        UserDefaults.standard.set(userIDGoogle, forKey: "idGG")
-        UserDefaults.standard.set(nameIDGoogle, forKey: "nameUserSession")
+        let userIDGoogle = String(currentUser!.userID)
+        let nameIDGoogle = String(currentUser!.profile.name)
+        checkAccountExist(id: userIDGoogle, name: nameIDGoogle)
+        UserDefaults.standard.set(currentUser!.userID, forKey: "idGG")
+        UserDefaults.standard.set(currentUser!.profile.name, forKey: "nameUserSession")
         UserDefaults.standard.set(2, forKey: "option")
-         nextToCategoryScreen()
+        nextToCategoryScreen()
     }
 }
