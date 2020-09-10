@@ -21,10 +21,11 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         inputName.text = nameUser
         setProfile()
-        print(imgAvatar)
+      setAvatar()
     }
     
-
+    @IBOutlet weak var viewAvatar: UIImageView!
+    
     @IBAction func btnSave(_ sender: Any) {
         
         if(inputName.text == nameUser){
@@ -78,7 +79,8 @@ class ProfileViewController: UIViewController {
               DispatchQueue.global().async {
                   let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
                   DispatchQueue.main.async {
-//                      cell.imgAvatar.image = UIImage(data: data!)
+                    print("vao day r")
+                    self.viewAvatar.image = UIImage(data: data!)
                   }
               }
     }
