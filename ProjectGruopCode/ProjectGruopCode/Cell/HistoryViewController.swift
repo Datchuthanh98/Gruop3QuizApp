@@ -21,7 +21,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     
     
     
-    var listHistory = [History(id: "", userName: "",  score: 1, numberQuestion:  1 ,timeComplete: 1,timeHistory: "")]
+    var listHistory = [History(id: "", userName: "",avatar: "",  score: 1, numberQuestion:  1 ,timeComplete: 1,timeHistory: "")]
     let dataTable = "1HxVup2Hiua1mhNIMNujHJhj4zatLWKs_WXQH5qiypZA"
     var ref = Database.database().reference()
     
@@ -109,17 +109,49 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryCell", for: indexPath) as! HistoryCustomcellTableViewCell
+      
+        
+        
+        DispatchQueue.global().async {
+             DispatchQueue.main.async {
+                  cell.setRank(rank : indexPath.row+1)
+                       cell.txtSTT.layer.cornerRadius = cell.txtScore.bounds.height / 2
+                       cell.txtSTT.layer.masksToBounds = true
+                       cell.imgAvatar.layer.cornerRadius = cell.imgAvatar.bounds.height / 2
+                 
+                       cell.CardView.layer.cornerRadius = 8
+                       cell.CardView.layer.masksToBounds = false
+                       cell.CardView.layer.shadowOpacity = 0.8
+                       cell.CardView.layer.shadowOffset = CGSize(width: 0, height: 1)
+                       cell.CardView.layer.shadowColor = UIColor.black.cgColor
+             }
+         }
+         
+        
+        
         
         cell.txtName.text = "Name : \(listHistory[indexPath.row].userName)"
         cell.txtScore.text = "Score : \(String(listHistory[indexPath.row].score))/ \(String(listHistory[indexPath.row].score))"
         cell.txtTimeHistory.text = "Create:  \(String(listHistory[indexPath.row].timeHistory))"
         cell.txtTimeDo.text = "Time :  \(String(listHistory[indexPath.row].timeComplete))"
         
+        //set avatar
+        var url = URL(string: self.listHistory[indexPath.row].avatar ?? "user")
+        DispatchQueue.global().async {
+            let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+            DispatchQueue.main.async {
+                cell.imgAvatar.image = UIImage(data: data!)
+            }
+        }
+        
+        
+ 
+      
+        
+        
         
         //MARK
-        cell.setRank(rank : indexPath.row+1)
-        cell.txtSTT.layer.cornerRadius = cell.txtScore.bounds.height / 2
-        cell.txtSTT.layer.masksToBounds = true
+        
         
         return cell
     }
@@ -139,21 +171,20 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
                 }
                 let idUser = dict["id"] as! String
                 let userName = dict["userName"] as! String
+                let avatar = dict["avatar"] as! String
                 let score = dict["score"] as! Int
                 let timeComplete = dict["timeComplete"] as! Int
                 let timeHistory = dict["timeHistory"] as! String
                 let numberQuestion = dict["numberQuestion"] as! Int
-                
-                let h = History(id: idUser, userName: userName, score: score,numberQuestion: numberQuestion, timeComplete: timeComplete,timeHistory : timeHistory)
+                let h = History(id: idUser, userName: userName, avatar: avatar, score: score,numberQuestion: numberQuestion, timeComplete: timeComplete,timeHistory : timeHistory)
                 self.listHistory.append(h)
                 
             }
-//            self.listHistory.sort(by: {$0.score > $1.score})
-             self.listHistory = self.listHistory.sorted{
+            self.listHistory = self.listHistory.sorted{
                 a1, a2 in
                 return (a1.score, a2.timeComplete) > (a2.score, a1.timeComplete)
             }
-
+            
             self.tblHistory.reloadData()
         }
     }
