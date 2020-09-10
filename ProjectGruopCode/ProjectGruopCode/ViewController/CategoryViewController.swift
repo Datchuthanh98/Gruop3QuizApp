@@ -11,14 +11,14 @@ import Firebase
 
 
 class CategoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
-
+    
     var listCategory = [""]
     var choose = -1
     var ref = Database.database().reference()
     let dataTable = "1HxVup2Hiua1mhNIMNujHJhj4zatLWKs_WXQH5qiypZA"
     var refreshControl = UIRefreshControl()
-
-
+    
+    
     
     
     @IBOutlet weak var tblCategory: UITableView!
@@ -33,7 +33,7 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
         tblCategory.delegate = self
         tblCategory.dataSource = self
-//          lblUserName.text = "\(UserDefaults.standard.string(forKey: "nameUserSession") ?? "Underfined")"
+        //          lblUserName.text = "\(UserDefaults.standard.string(forKey: "nameUserSession") ?? "Underfined")"
         let nibName = UINib(nibName: "CategoryCustomCell", bundle: nil)
         tblCategory.register(nibName, forCellReuseIdentifier: "CategoryCell")
         GetListCategory()
@@ -42,7 +42,7 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
         refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
         tblCategory.addSubview(refreshControl) // not
         
-
+        
     }
     
     @objc func refresh(_ sender: AnyObject) {
@@ -50,7 +50,7 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
         refreshControl.endRefreshing()
     }
     
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return listCategory.count
     }
@@ -61,21 +61,41 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
         cell.lblCategory.text = listCategory[indexPath.row]
         cell.nameCategory = listCategory[indexPath.row]
         
-        cell.imgCategory.layer.cornerRadius = 10
-        cell.btnTryTest.layer.cornerRadius = 10
-        cell.btnListQues.layer.cornerRadius = 10
+        cell.imgCategory.layer.cornerRadius = 8
+//        cell.btnTryTest.layer.cornerRadius = 10
+//        cell.btnListQues.layer.cornerRadius = 10
+        cell.imgCategory.layer.masksToBounds = true
         
-        cell.viewContent.layer.cornerRadius = 10
-        cell.viewContent.layer.borderWidth = 1
-        cell.viewContent.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        cell.lblCategory.layer.cornerRadius = 20
+        cell.viewTest.layer.cornerRadius = 8
+        cell.viewTest.layer.masksToBounds = false
+        cell.viewTest.layer.shadowOpacity = 0.8
+        cell.viewTest.layer.shadowOffset = CGSize(width: 0, height: 0)
+        cell.viewTest.layer.shadowColor = UIColor.black.cgColor
+//        cell.contentView.backgroundColor = UIColor(red: 240/255.0, green: 240/255.0, blue: 240/255.0, alpha: 1.0)
+        //        cell.viewTest.layer.backgroundColor = UIColor.white.cgColor
+        //        cell.contentView.backgroundColor = UIColor(red: 240/255.0, green: 240/255.0, blue: 240/255.0, alpha: 1.0)
+        //        cell.viewTest.layer.shadowColor = UIColor.black.cgColor
+        //        cell.viewTest.layer.masksToBounds = false
+        //        cell.viewTest.layer.cornerRadius = 8
+        //        cell.viewTest.layer.shadowOffset = CGSize(width: 0, height: 0)
+        //        cell.viewTest.layer.shadowOpacity = 0.8
         
-        cell.btnTryTest.layer.cornerRadius = 10
-        cell.btnTryTest.layer.borderWidth = 2
-        cell.btnTryTest.layer.borderColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+        //        cell.viewContent.layer.cornerRadius = 10
+        //        cell.viewContent.layer.borderWidth = 1
+        //        cell.viewContent.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         
-        cell.btnListQues.layer.cornerRadius = 10
-        cell.btnListQues.layer.borderWidth = 2
-        cell.btnListQues.layer.borderColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+        
+        
+        //        cell.btnTryTest.layer.cornerRadius = 10
+        //        cell.btnTryTest.layer.borderWidth = 2
+        //        cell.btnTryTest.layer.borderColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+        
+        //        cell.btnListQues.layer.cornerRadius = 10
+        //        cell.btnListQues.layer.borderWidth = 2
+        //        cell.btnListQues.layer.borderColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+        
+        
         
         return cell
     }
@@ -89,33 +109,33 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
         choose = indexPath.row
     }
     
-  
+    
     
     
     func showDialogPick(){
-         let myAlert = UIAlertController(title: "You have not choose item!", message: "Please pick any item to continue", preferredStyle: .alert)
-                   let actionOnOk = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
-                     UIAlertAction in
-                   //add your code here to execute while clicking ok button
-                   }
-                   myAlert.addAction(actionOnOk)
-                   self.present(myAlert, animated: true, completion: nil)    }
+        let myAlert = UIAlertController(title: "You have not choose item!", message: "Please pick any item to continue", preferredStyle: .alert)
+        let actionOnOk = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
+            UIAlertAction in
+            //add your code here to execute while clicking ok button
+        }
+        myAlert.addAction(actionOnOk)
+        self.present(myAlert, animated: true, completion: nil)    }
     
     
     func nextoListQuestionScreen(){
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "listQuestionScreen") as! QuestionViewController
         vc.category = listCategory[choose]
         self.navigationController?.pushViewController(vc, animated: true)
-    
+        
     }
     
     func nextoExamScreen(){
         
-          
+        
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "examScreen") as! ViewController
-//        vc.category = listCategory[choose]
-                  self.navigationController?.pushViewController(vc, animated: true)
-    
+        //        vc.category = listCategory[choose]
+        self.navigationController?.pushViewController(vc, animated: true)
+        
     }
     
     func GetListCategory(){
@@ -127,50 +147,50 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
             }
             
             self.tblCategory.reloadData()
-//            print(groupNames)
+            //            print(groupNames)
         })
     }
-  
-
+    
+    
     @IBAction func clickHistoryExam(_ sender: Any) {
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "historyScreen") as! HistoryViewController
-
-                                     self.navigationController?.pushViewController(vc, animated: true)
+        
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
-//    func custom() {
-//        btnHistory.layer.cornerRadius = btnHistory.bounds.height / 2
-//
-//    }
+    //    func custom() {
+    //        btnHistory.layer.cornerRadius = btnHistory.bounds.height / 2
+    //
+    //    }
     
     @IBAction func btnSignOut(_ sender: Any) {
         UserDefaults.standard.removeObject(forKey: "option")
         UserDefaults.standard.removeObject(forKey: "nameUserSession")
-          UserDefaults.standard.removeObject(forKey: "idGG")
+        UserDefaults.standard.removeObject(forKey: "idGG")
         UserDefaults.standard.removeObject(forKey: "idFB")
         let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginController") as! LoginController
         self.navigationController?.pushViewController(vc, animated: true)
     }
-        
-
+    
+    
 }
 
 
 
 extension CategoryViewController : SmartDelegate {
     func didTapButton(with: String, nameCate: String) {
-   print(with)
-         if with == "view" {
-          
+        print(with)
+        if with == "view" {
+            
             let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "listQuestionScreen") as? QuestionViewController
             vc?.category = nameCate
             self.navigationController?.pushViewController(vc!, animated: true)
         } else {
-  
+            
             let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "examScreen") as? ViewController
             vc?.category = nameCate
             self.navigationController?.pushViewController(vc!, animated: false)
         }
     }
-
+    
 }
