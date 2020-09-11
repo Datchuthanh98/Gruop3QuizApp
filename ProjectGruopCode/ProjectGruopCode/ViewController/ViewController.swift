@@ -225,10 +225,11 @@ class ViewController: UIViewController ,UITextViewDelegate,UITableViewDelegate, 
         self.imgAnimate.isHidden = false
         let seconds = 0.25
         DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
-            
+             print("123")
             self.imgAnimate.isHidden = true
         }
     }
 }
+
 
 
