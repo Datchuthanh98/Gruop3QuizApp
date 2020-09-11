@@ -16,14 +16,16 @@ struct History {
     var timeComplete : Int
     var timeHistory : String
     var numberQuestion : Int
+    var avatar : String
         
-    init( id: String, userName : String, score : Int,numberQuestion : Int , timeComplete : Int  ,timeHistory :String) {
+    init( id: String, userName : String, avatar : String, score : Int,numberQuestion : Int , timeComplete : Int  ,timeHistory :String) {
         self.id = id
         self.userName = userName
         self .score = score
         self .timeComplete  = timeComplete
         self .timeHistory = timeHistory
         self.numberQuestion = numberQuestion
+        self.avatar = avatar
     }
     
 

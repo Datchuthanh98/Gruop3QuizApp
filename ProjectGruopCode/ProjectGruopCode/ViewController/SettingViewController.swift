@@ -18,6 +18,14 @@ class SettingViewController: UIViewController {
         super.viewDidLayoutSubviews()
         btnProfileOutlet.layer.cornerRadius = btnProfileOutlet.bounds.height / 4
         btnSettingTestOutlet.layer.cornerRadius = btnSettingTestOutlet.bounds.height / 4
+        btnProfileOutlet.layer.borderWidth = 1
+        btnProfileOutlet.layer.borderColor = #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)
+        btnSettingTestOutlet.layer.borderWidth = 1
+        btnSettingTestOutlet.layer.borderColor = #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)
+    }
+    
+    func setShadow(){
+        
     }
 
     override func viewDidLoad() {
@@ -28,7 +36,7 @@ class SettingViewController: UIViewController {
     
 
     @IBAction func lcikProfile(_ sender: Any) {
-        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "profileScreen") as! ProfileViewController
+        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "tabarProfile") 
         //           vc.score = self.score
         self.navigationController?.pushViewController(vc, animated: true)
     }

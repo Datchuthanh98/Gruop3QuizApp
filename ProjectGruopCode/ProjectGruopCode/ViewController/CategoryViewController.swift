@@ -62,9 +62,8 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
         cell.nameCategory = listCategory[indexPath.row]
         
         cell.imgCategory.layer.cornerRadius = 8
-//        cell.btnTryTest.layer.cornerRadius = 10
-//        cell.btnListQues.layer.cornerRadius = 10
         cell.imgCategory.layer.masksToBounds = true
+        cell.imgCategory.image = UIImage.init(named: listCategory[indexPath.row])
         
         cell.lblCategory.layer.cornerRadius = 20
         cell.viewTest.layer.cornerRadius = 8
@@ -72,36 +71,14 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
         cell.viewTest.layer.shadowOpacity = 0.8
         cell.viewTest.layer.shadowOffset = CGSize(width: 0, height: 0)
         cell.viewTest.layer.shadowColor = UIColor.black.cgColor
-//        cell.contentView.backgroundColor = UIColor(red: 240/255.0, green: 240/255.0, blue: 240/255.0, alpha: 1.0)
-        //        cell.viewTest.layer.backgroundColor = UIColor.white.cgColor
-        //        cell.contentView.backgroundColor = UIColor(red: 240/255.0, green: 240/255.0, blue: 240/255.0, alpha: 1.0)
-        //        cell.viewTest.layer.shadowColor = UIColor.black.cgColor
-        //        cell.viewTest.layer.masksToBounds = false
-        //        cell.viewTest.layer.cornerRadius = 8
-        //        cell.viewTest.layer.shadowOffset = CGSize(width: 0, height: 0)
-        //        cell.viewTest.layer.shadowOpacity = 0.8
-        
-        //        cell.viewContent.layer.cornerRadius = 10
-        //        cell.viewContent.layer.borderWidth = 1
-        //        cell.viewContent.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        
-        
-        
-        //        cell.btnTryTest.layer.cornerRadius = 10
-        //        cell.btnTryTest.layer.borderWidth = 2
-        //        cell.btnTryTest.layer.borderColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
-        
-        //        cell.btnListQues.layer.cornerRadius = 10
-        //        cell.btnListQues.layer.borderWidth = 2
-        //        cell.btnListQues.layer.borderColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
-        
+
         
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 250
+        return 210
     }
     
     
