@@ -153,18 +153,19 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Jnu-2l-mxU"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dpx-6P-fb5">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dpx-6P-fb5">
                                 <rect key="frame" x="40" y="597" width="295" height="60"/>
                                 <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="F00-Yi-gTR"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <state key="normal" title="Quit">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title=" Quit" image="delete.left" catalog="system">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="btnBacktoHome:" destination="XPY-Au-i6y" eventType="touchUpInside" id="aU6-sP-A1n"/>
+                                    <action selector="btnQuitExam:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Csk-YN-ST2"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EzC-1N-Fr8">
@@ -365,7 +366,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="H9v-oU-UY0"/>
                                 </constraints>
-                                <state key="normal" title="Back">
+                                <state key="normal" title=" Back" image="arrowshape.turn.up.left" catalog="system">
                                     <color key="titleColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -482,14 +483,14 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XcQ-ys-DQd">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nvQ-Bn-lCd">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nvQ-Bn-lCd">
                                 <rect key="frame" x="40" y="597" width="295" height="60"/>
                                 <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="kNW-Tv-pJV"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <state key="normal" title="Back To Home">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title=" Back To Home" image="eject" catalog="system">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -645,25 +646,25 @@
                                     <constraint firstItem="V3M-dC-Jg5" firstAttribute="top" secondItem="Y9y-ar-at4" secondAttribute="bottom" id="wFK-6x-MTB"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AlR-9t-37e">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AlR-9t-37e">
                                 <rect key="frame" x="40" y="597" width="295" height="60"/>
                                 <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="j8a-tz-bBL"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <state key="normal" title="Save">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title=" Save" image="arrow.uturn.down" catalog="system">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="clickSave:" destination="Y7h-bo-mYA" eventType="touchUpInside" id="eBV-sc-t6o"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dCp-He-J4i">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dCp-He-J4i">
                                 <rect key="frame" x="5" y="5" width="100" height="45"/>
                                 <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <state key="normal" title="Back">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title=" Back" image="arrowshape.turn.up.left" catalog="system">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -762,11 +763,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wee-qZ-i4E">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wee-qZ-i4E">
                                 <rect key="frame" x="5" y="5" width="100" height="45"/>
                                 <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <state key="normal" title="Back">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title=" Back" image="arrowshape.turn.up.left" catalog="system">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -811,16 +812,6 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oBp-pk-5cu">
-                                        <rect key="frame" x="127.5" y="243" width="100" height="45"/>
-                                        <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Logout">
-                                            <color key="titleColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="signOut:" destination="E1m-j9-1Dr" eventType="touchUpInside" id="uxw-P4-q4d"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
@@ -830,8 +821,6 @@
                                     <constraint firstItem="2n7-O7-fCs" firstAttribute="width" secondItem="kil-0i-aQi" secondAttribute="width" constant="-100" id="OjC-4F-7ge"/>
                                     <constraint firstItem="8jc-ax-zaC" firstAttribute="height" secondItem="2n7-O7-fCs" secondAttribute="height" id="cbF-cr-cHz"/>
                                     <constraint firstItem="2n7-O7-fCs" firstAttribute="top" secondItem="kil-0i-aQi" secondAttribute="top" id="nsJ-Bx-9fb"/>
-                                    <constraint firstAttribute="bottom" secondItem="oBp-pk-5cu" secondAttribute="bottom" constant="20" id="tJ9-CL-bdF"/>
-                                    <constraint firstItem="oBp-pk-5cu" firstAttribute="centerX" secondItem="kil-0i-aQi" secondAttribute="centerX" id="vPu-JI-qq3"/>
                                     <constraint firstItem="2n7-O7-fCs" firstAttribute="centerX" secondItem="kil-0i-aQi" secondAttribute="centerX" id="veP-sS-sgt"/>
                                 </constraints>
                             </view>
@@ -850,18 +839,31 @@
                                     <action selector="btnEditProfile:" destination="E1m-j9-1Dr" eventType="touchUpInside" id="tIy-Ff-1y6"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oBp-pk-5cu">
+                                <rect key="frame" x="40" y="548" width="295" height="60"/>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <state key="normal" title="  Logout" image="escape" catalog="system">
+                                    <color key="titleColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="signOut:" destination="E1m-j9-1Dr" eventType="touchUpInside" id="uxw-P4-q4d"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="oBp-pk-5cu" firstAttribute="width" secondItem="dCP-Om-NOV" secondAttribute="width" id="APp-2f-cuG"/>
+                            <constraint firstItem="oBp-pk-5cu" firstAttribute="width" secondItem="Hi3-KF-u8y" secondAttribute="width" id="1cc-9Q-PNI"/>
+                            <constraint firstItem="oBp-pk-5cu" firstAttribute="height" secondItem="Hi3-KF-u8y" secondAttribute="height" id="3aU-g3-o6D"/>
                             <constraint firstItem="wee-qZ-i4E" firstAttribute="top" secondItem="7vC-73-W45" secondAttribute="top" constant="5" id="D2H-95-Bpk"/>
-                            <constraint firstItem="oBp-pk-5cu" firstAttribute="height" secondItem="dCP-Om-NOV" secondAttribute="height" id="EJ3-ab-sDF"/>
                             <constraint firstItem="wee-qZ-i4E" firstAttribute="leading" secondItem="7vC-73-W45" secondAttribute="leading" constant="5" id="IRG-oy-n4u"/>
                             <constraint firstItem="wee-qZ-i4E" firstAttribute="width" secondItem="dCP-Om-NOV" secondAttribute="width" id="LfM-EL-cQW"/>
+                            <constraint firstItem="7vC-73-W45" firstAttribute="bottom" secondItem="oBp-pk-5cu" secondAttribute="bottom" constant="10" id="MJf-Nb-PMR"/>
                             <constraint firstItem="Hi3-KF-u8y" firstAttribute="top" secondItem="kil-0i-aQi" secondAttribute="bottom" constant="20" id="On7-sG-edz"/>
                             <constraint firstItem="Hi3-KF-u8y" firstAttribute="width" secondItem="7vC-73-W45" secondAttribute="width" constant="-80" id="Tp1-JA-PiC"/>
                             <constraint firstItem="kil-0i-aQi" firstAttribute="centerX" secondItem="7vC-73-W45" secondAttribute="centerX" id="XQN-lE-oac"/>
                             <constraint firstItem="kil-0i-aQi" firstAttribute="top" secondItem="tIN-DN-FI3" secondAttribute="bottom" constant="20" id="XWw-zz-q7u"/>
+                            <constraint firstItem="oBp-pk-5cu" firstAttribute="centerX" secondItem="7vC-73-W45" secondAttribute="centerX" id="cp8-Mu-2sq"/>
                             <constraint firstItem="7vC-73-W45" firstAttribute="trailing" secondItem="dCP-Om-NOV" secondAttribute="trailing" constant="5" id="fL5-qe-Zez"/>
                             <constraint firstItem="wee-qZ-i4E" firstAttribute="height" secondItem="dCP-Om-NOV" secondAttribute="height" id="fqb-Lk-FRf"/>
                             <constraint firstItem="kil-0i-aQi" firstAttribute="width" secondItem="cg7-iM-Rpi" secondAttribute="width" multiplier="0.946667" id="nXg-j2-OVy"/>
@@ -994,7 +996,7 @@
         <!--Rank-->
         <scene sceneID="AOO-oQ-V9M">
             <objects>
-                <viewController storyboardIdentifier="historyScreen" id="wZr-kg-dgk" customClass="HistoryViewController" customModule="ProjectGruopCode" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="historyScreen" id="wZr-kg-dgk" customClass="RankingViewController" customModule="ProjectGruopCode" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Sah-aH-FQE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1218,6 +1220,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="History" image="book" catalog="system" landscapeImage="person.3" selectedImage="book.fill" id="EBz-7K-ohZ"/>
                     <connections>
+                        <outlet property="btnBackOutlet" destination="8Ou-3C-05d" id="Ut8-GQ-LG0"/>
                         <outlet property="inputCategory" destination="Svz-3Q-i2u" id="lhr-RZ-cPc"/>
                         <outlet property="tblHistory" destination="Sps-0O-hJz" id="ojZ-cC-B7l"/>
                     </connections>
@@ -1228,6 +1231,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.uturn.down" catalog="system" width="128" height="118"/>
+        <image name="arrowshape.turn.up.left" catalog="system" width="128" height="106"/>
         <image name="bglogin.jpeg" width="168" height="299"/>
         <image name="board2" width="325" height="250"/>
         <image name="book" catalog="system" width="128" height="101"/>
@@ -1236,7 +1241,10 @@
         <image name="bookmark.fill" catalog="system" width="112" height="128"/>
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="clock" width="86" height="86"/>
+        <image name="delete.left" catalog="system" width="128" height="104"/>
         <image name="doc.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="eject" catalog="system" width="128" height="112"/>
+        <image name="escape" catalog="system" width="128" height="121"/>
         <image name="fb" width="48" height="48"/>
         <image name="gg" width="48" height="48"/>
         <image name="line.horizontal.3.decrease.circle.fill" catalog="system" width="128" height="121"/>

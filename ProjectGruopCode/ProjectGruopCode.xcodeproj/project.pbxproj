@@ -30,9 +30,9 @@
 		7FA0C386250A447E00BB2403 /* HistoryUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0C385250A447E00BB2403 /* HistoryUserViewController.swift */; };
 		7FA0C38D250A474200BB2403 /* HistoryUserViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA0C38B250A474200BB2403 /* HistoryUserViewCell.swift */; };
 		7FA0C38E250A474200BB2403 /* HistoryUserViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FA0C38C250A474200BB2403 /* HistoryUserViewCell.xib */; };
-		7FA3AB2C25022AFC00294AD6 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA3AB2B25022AFC00294AD6 /* HistoryViewController.swift */; };
-		7FA3AB3125022B2500294AD6 /* HistoryCustomcellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FA3AB2F25022B2500294AD6 /* HistoryCustomcellTableViewCell.xib */; };
-		7FA3AB3225022B2500294AD6 /* HistoryCustomcellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA3AB3025022B2500294AD6 /* HistoryCustomcellTableViewCell.swift */; };
+		7FA3AB2C25022AFC00294AD6 /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA3AB2B25022AFC00294AD6 /* RankingViewController.swift */; };
+		7FA3AB3125022B2500294AD6 /* RankingViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FA3AB2F25022B2500294AD6 /* RankingViewCell.xib */; };
+		7FA3AB3225022B2500294AD6 /* RankingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA3AB3025022B2500294AD6 /* RankingViewCell.swift */; };
 		7FA518352502053E004B05CA /* CategoryCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA518312502053E004B05CA /* CategoryCustomCell.swift */; };
 		7FA518362502053E004B05CA /* QuestionCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FA518322502053E004B05CA /* QuestionCustomCell.xib */; };
 		7FA518372502053E004B05CA /* QuestionCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA518332502053E004B05CA /* QuestionCustomCell.swift */; };
@@ -70,9 +70,9 @@
 		7FA0C385250A447E00BB2403 /* HistoryUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryUserViewController.swift; sourceTree = "<group>"; };
 		7FA0C38B250A474200BB2403 /* HistoryUserViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryUserViewCell.swift; sourceTree = "<group>"; };
 		7FA0C38C250A474200BB2403 /* HistoryUserViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryUserViewCell.xib; sourceTree = "<group>"; };
-		7FA3AB2B25022AFC00294AD6 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HistoryViewController.swift; path = ../Cell/HistoryViewController.swift; sourceTree = "<group>"; };
-		7FA3AB2F25022B2500294AD6 /* HistoryCustomcellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryCustomcellTableViewCell.xib; sourceTree = "<group>"; };
-		7FA3AB3025022B2500294AD6 /* HistoryCustomcellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryCustomcellTableViewCell.swift; sourceTree = "<group>"; };
+		7FA3AB2B25022AFC00294AD6 /* RankingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RankingViewController.swift; path = ../Cell/RankingViewController.swift; sourceTree = "<group>"; };
+		7FA3AB2F25022B2500294AD6 /* RankingViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RankingViewCell.xib; sourceTree = "<group>"; };
+		7FA3AB3025022B2500294AD6 /* RankingViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingViewCell.swift; sourceTree = "<group>"; };
 		7FA518312502053E004B05CA /* CategoryCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCustomCell.swift; sourceTree = "<group>"; };
 		7FA518322502053E004B05CA /* QuestionCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestionCustomCell.xib; sourceTree = "<group>"; };
 		7FA518332502053E004B05CA /* QuestionCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionCustomCell.swift; sourceTree = "<group>"; };
@@ -109,7 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				7F119D71250787930002E17B /* ziazia.gif */,
-				7FA3AB2B25022AFC00294AD6 /* HistoryViewController.swift */,
+				7FA3AB2B25022AFC00294AD6 /* RankingViewController.swift */,
 				7FA518392502054F004B05CA /* QuestionViewController.swift */,
 				7FA5183A2502054F004B05CA /* CategoryViewController.swift */,
 				7F3776082500830C00C752CB /* ViewController.swift */,
@@ -165,8 +165,8 @@
 			children = (
 				7FA518312502053E004B05CA /* CategoryCustomCell.swift */,
 				7FA518342502053E004B05CA /* CategoryCustomCell.xib */,
-				7FA3AB3025022B2500294AD6 /* HistoryCustomcellTableViewCell.swift */,
-				7FA3AB2F25022B2500294AD6 /* HistoryCustomcellTableViewCell.xib */,
+				7FA3AB3025022B2500294AD6 /* RankingViewCell.swift */,
+				7FA3AB2F25022B2500294AD6 /* RankingViewCell.xib */,
 				7FA518322502053E004B05CA /* QuestionCustomCell.xib */,
 				7FA518332502053E004B05CA /* QuestionCustomCell.swift */,
 				7F3776222500D65D00C752CB /* ExamTableViewCell.swift */,
@@ -267,7 +267,7 @@
 				7FA0C38E250A474200BB2403 /* HistoryUserViewCell.xib in Resources */,
 				7F119D72250787930002E17B /* ziazia.gif in Resources */,
 				7F37760C2500830C00C752CB /* Main.storyboard in Resources */,
-				7FA3AB3125022B2500294AD6 /* HistoryCustomcellTableViewCell.xib in Resources */,
+				7FA3AB3125022B2500294AD6 /* RankingViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,12 +341,12 @@
 				7FA0C386250A447E00BB2403 /* HistoryUserViewController.swift in Sources */,
 				7F3776092500830C00C752CB /* ViewController.swift in Sources */,
 				7F3776052500830C00C752CB /* AppDelegate.swift in Sources */,
-				7FA3AB3225022B2500294AD6 /* HistoryCustomcellTableViewCell.swift in Sources */,
+				7FA3AB3225022B2500294AD6 /* RankingViewCell.swift in Sources */,
 				564630B7250373290017F9D3 /* User.swift in Sources */,
 				7F921A5A25088665005446DA /* ConfigexamViewController.swift in Sources */,
 				7FA5183C2502054F004B05CA /* CategoryViewController.swift in Sources */,
 				7F921A5825088648005446DA /* ProfileViewController.swift in Sources */,
-				7FA3AB2C25022AFC00294AD6 /* HistoryViewController.swift in Sources */,
+				7FA3AB2C25022AFC00294AD6 /* RankingViewController.swift in Sources */,
 				7F3776072500830C00C752CB /* SceneDelegate.swift in Sources */,
 				7F3776242500D65D00C752CB /* ExamTableViewCell.swift in Sources */,
 				7F37761E2500C41600C752CB /* Category.swift in Sources */,
