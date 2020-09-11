@@ -171,10 +171,8 @@ class HistoryUserViewController: UIViewController, UITableViewDataSource, UITabl
             
         })
     }
-    @IBAction func btnBackk(_ sender: Any) {
-         self.navigationController?.popViewController(animated: true)
-    }
-    
+
     @IBAction func btnBack(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
 }
