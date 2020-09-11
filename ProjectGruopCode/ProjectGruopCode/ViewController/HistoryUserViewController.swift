@@ -27,10 +27,9 @@ class HistoryUserViewController: UIViewController, UITableViewDataSource, UITabl
     
     
     
-    @IBOutlet weak var inputCategory: UITextField!
-    
     @IBOutlet weak var tblHistory: UITableView!
     
+    @IBOutlet weak var inputCategory: UITextField!
     
     
     override func viewDidLayoutSubviews() {
@@ -170,10 +169,10 @@ class HistoryUserViewController: UIViewController, UITableViewDataSource, UITabl
             
         })
     }
-    
+    @IBAction func btnBackk(_ sender: Any) {
+         self.navigationController?.popViewController(animated: true)
+    }
     
     @IBAction func btnBack(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
-        
     }
 }
