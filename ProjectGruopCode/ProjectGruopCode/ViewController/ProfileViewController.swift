@@ -22,6 +22,7 @@ class ProfileViewController: UIViewController {
     
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var btnSave: UIButton!
+
     
     @IBOutlet weak var btnLogout: UIButton!
     @IBOutlet weak var btnCancelOutlet: UIButton!
@@ -33,6 +34,8 @@ class ProfileViewController: UIViewController {
         btnLogout.layer.cornerRadius = btnLogout.bounds.height / 2
         btnCancelOutlet.layer.cornerRadius = btnCancelOutlet.bounds.height / 2
         btnSaveOutlet.layer.cornerRadius = btnSaveOutlet.bounds.height / 2
+        btnEdit.layer.cornerRadius = btnEdit.bounds.height / 2
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,6 +70,7 @@ class ProfileViewController: UIViewController {
         lblName.isHidden = false
         let icon = UIImage(systemName: "doc.text.fill")
         btnSave.isHidden = true
+        btnLogout.isHidden = false
     }
     @IBAction func btnCancel(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
@@ -85,11 +89,20 @@ class ProfileViewController: UIViewController {
 
         
         UserDefaults.standard.set(inputName.text, forKey: "nameUserSession")
-              let alertController = UIAlertController(title: "Update profile sucessfully", message: nil, preferredStyle: .alert)
-        let confirmAction = UIAlertAction(title: "OK", style: .default) { (_) in}
-         alertController.addAction(confirmAction)
+              let alertController = UIAlertController(title: "Update sucessfully", message: nil, preferredStyle: .alert)
         self.present(alertController, animated: true, completion: nil)
+        
+   
+
+    
+
+
+       
     }
+    
+ 
+    
+    
     func setProfile(){
         if(self.option == 1){
                   self.id = UserDefaults.standard.string(forKey: "idFB") ?? ""
@@ -139,6 +152,7 @@ class ProfileViewController: UIViewController {
                    btnEdit.setImage(icon, for: .normal)
                    btnSave.isHidden = false
                    isEdit == true
+                btnLogout.isHidden = true
            }
     }
    
