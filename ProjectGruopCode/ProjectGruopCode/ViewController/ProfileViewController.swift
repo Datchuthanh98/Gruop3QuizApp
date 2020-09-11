@@ -76,28 +76,27 @@ class ProfileViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     func updateToFirebase(){
-        let profile = [
-            "name" : inputName.text,
-               ] as [String : Any]
-               ref.child("profile").child(id).setValue(profile,withCompletionBlock: { error , ref in
-                   if error == nil {
-                       self.dismiss(animated: true, completion: nil)
-                   }else{
-                       //handle
-                   }
-               } )
+        if self.inputName.text == "" {
+               let alert = UIAlertController(title: "Input error", message: "Required fields can not be blank! Please try again.", preferredStyle: UIAlertController.Style.alert)
+               alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+               self.present(alert, animated: true, completion: nil)
+           } else {
+               let profile = [
+                   "name" : inputName.text,
+                      ] as [String : Any]
+                      ref.child("profile").child(id).setValue(profile,withCompletionBlock: { error , ref in
+                          if error == nil {
+                              self.dismiss(animated: true, completion: nil)
+                          }else{
+                              //handle
+                          }
+                      } )
 
-        
-        UserDefaults.standard.set(inputName.text, forKey: "nameUserSession")
-              let alertController = UIAlertController(title: "Update sucessfully", message: nil, preferredStyle: .alert)
-        self.present(alertController, animated: true, completion: nil)
-        
-   
-
-    
-
-
-       
+               
+               UserDefaults.standard.set(inputName.text, forKey: "nameUserSession")
+                     let alertController = UIAlertController(title: "Update sucessfully", message: nil, preferredStyle: .alert)
+               self.present(alertController, animated: true, completion: nil)
+           }
     }
     
  
@@ -155,5 +154,10 @@ class ProfileViewController: UIViewController {
                 btnLogout.isHidden = true
            }
     }
+    
+    
+    func checkOut(){
+  
    
+    }
 }
