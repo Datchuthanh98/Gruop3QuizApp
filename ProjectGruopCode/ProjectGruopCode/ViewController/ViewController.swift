@@ -23,6 +23,7 @@ class ViewController: UIViewController ,UITextViewDelegate,UITableViewDelegate, 
     
     @IBOutlet weak var imgAnimate: UIImageView!
     
+    @IBOutlet weak var btnQuitOutlet: UIButton!
     @IBOutlet weak var btnNext: UIButton!
     @IBOutlet weak var tblContact: UITableView!
     @IBOutlet weak var lblQuestion: UILabel!
@@ -33,6 +34,7 @@ class ViewController: UIViewController ,UITextViewDelegate,UITableViewDelegate, 
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        btnQuitOutlet.layer.cornerRadius = btnQuitOutlet.bounds.height / 2
     }
     
     override var hidesBottomBarWhenPushed: Bool {
