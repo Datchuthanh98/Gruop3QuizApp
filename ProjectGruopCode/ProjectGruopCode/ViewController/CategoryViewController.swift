@@ -63,13 +63,13 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
         
         cell.imgCategory.layer.cornerRadius = 8
         cell.imgCategory.layer.masksToBounds = true
-        cell.imgCategory.image = UIImage.init(named: listCategory[indexPath.row])
+        cell.imgCategory.image = UIImage.init(named: listCategory[indexPath.row].lowercased())
         
         cell.lblCategory.layer.cornerRadius = 20
         cell.viewTest.layer.cornerRadius = 8
         cell.viewTest.layer.masksToBounds = false
         cell.viewTest.layer.shadowOpacity = 0.8
-        cell.viewTest.layer.shadowOffset = CGSize(width: 0, height: 0)
+        cell.viewTest.layer.shadowOffset = CGSize(width: 2, height: 3)
         cell.viewTest.layer.shadowColor = UIColor.black.cgColor
 
         
@@ -130,7 +130,7 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
     
     
     @IBAction func clickHistoryExam(_ sender: Any) {
-        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "historyScreen") as! HistoryViewController
+        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "historyScreen") as! RankingViewController
         
         self.navigationController?.pushViewController(vc, animated: true)
     }

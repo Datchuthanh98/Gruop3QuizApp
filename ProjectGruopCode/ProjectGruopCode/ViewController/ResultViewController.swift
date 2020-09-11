@@ -44,8 +44,8 @@ class ResultViewController: UIViewController {
      
             gif.isHidden = false
             gif.loadGif(name: "ziazia")
-            self.txtScore.text = "You finish exam with score : \(self.score)/\(self.numberQuestion) in \(timeComplete) second"
-            self.txtScore.textColor = UIColor.green
+            self.txtScore.text = "You finished exam with score : \(self.score)/\(self.numberQuestion) in \(timeComplete) second"
+             
        
     }
     
