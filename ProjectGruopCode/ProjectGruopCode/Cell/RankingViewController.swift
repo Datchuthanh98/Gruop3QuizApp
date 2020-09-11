@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class HistoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate , UIPickerViewDelegate ,UIPickerViewDataSource, UITextFieldDelegate{
+class RankingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate , UIPickerViewDelegate ,UIPickerViewDataSource, UITextFieldDelegate{
     
     
     
@@ -43,7 +43,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         createPickerView()
         dismissPickerView()
          self.inputCategory.delegate = self
-        let nibName = UINib(nibName: "HistoryCustomcellTableViewCell", bundle: nil)
+        let nibName = UINib(nibName: "RankingViewCell", bundle: nil)
         tblHistory.register(nibName, forCellReuseIdentifier: "HistoryCell")
         GetListCategory()
         getData()
@@ -112,7 +112,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryCell", for: indexPath) as! HistoryCustomcellTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryCell", for: indexPath) as! RankingViewCell
       
         
         
@@ -126,7 +126,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
                        cell.CardView.layer.cornerRadius = 8
                        cell.CardView.layer.masksToBounds = false
                        cell.CardView.layer.shadowOpacity = 0.8
-                       cell.CardView.layer.shadowOffset = CGSize(width: 0, height: 1)
+                       cell.CardView.layer.shadowOffset = CGSize(width: 2, height: 3)
                        cell.CardView.layer.shadowColor = UIColor.black.cgColor
              }
          }
@@ -142,21 +142,12 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         //set avatar
         var url = URL(string: self.listHistory[indexPath.row].avatar ?? "user")
         DispatchQueue.global().async {
-            let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+            let data = try? Data(contentsOf: url!) 
             DispatchQueue.main.async {
                 cell.imgAvatar.image = UIImage(data: data!)
             }
         }
-        
-        
- 
-      
-        
-        
-        
-        //MARK
-        
-        
+
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -231,6 +231,9 @@ class ViewController: UIViewController ,UITextViewDelegate,UITableViewDelegate, 
             self.imgAnimate.isHidden = true
         }
     }
+    @IBAction func btnQuitExam(_ sender: Any) {
+         self.navigationController?.popViewController(animated:  true)
+    }
 }
 
 

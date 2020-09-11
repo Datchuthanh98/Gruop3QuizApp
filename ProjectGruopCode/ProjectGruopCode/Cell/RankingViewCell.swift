@@ -7,7 +7,7 @@
 //
 import UIKit
 
-class HistoryCustomcellTableViewCell: UITableViewCell {
+class RankingViewCell: UITableViewCell {
     
     
     @IBOutlet weak var CardView: UIView!

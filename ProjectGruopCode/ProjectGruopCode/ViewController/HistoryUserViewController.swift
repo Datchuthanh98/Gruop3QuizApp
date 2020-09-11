@@ -29,11 +29,13 @@ class HistoryUserViewController: UIViewController, UITableViewDataSource, UITabl
     
     @IBOutlet weak var tblHistory: UITableView!
     
+    @IBOutlet weak var btnBackOutlet: UIButton!
     @IBOutlet weak var inputCategory: UITextField!
     
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        btnBackOutlet.layer.cornerRadius = btnBackOutlet.bounds.height / 2
     }
     
     override func viewDidLoad() {
